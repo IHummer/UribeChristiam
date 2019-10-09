@@ -2,8 +2,38 @@
 
 {% block titulo %}Inventario{% endblock %}
 
+{% block inventario-activo %}active{% endblock %}
+
 {% block body %}
+
 este es el Inventario de productos
-
-
-{% endblock %}
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        Productos registrados</div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Nombre</th>
+                        <th>Categoría</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items_prod %}
+                    <tr>
+                        <td>{{ item.pk }}</td>
+                        <td>{{ item.prod_nomb }}</td>
+                        <td>{{ item.cat_prod }}</td>
+                        <td>{{ item.precio }}</td>
+                    </tr>
+                    {% endfor %}
+            </tbody>
+            </table>
+            </div>
+    </div>
+</div>
+    {% endblock %}

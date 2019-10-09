@@ -7,5 +7,5 @@ def index(request):
     return render(request, 'index.html')
 
 # @login_required(redirect_field_name='')
-def inventario(request):
-    return render(request, 'inventario/index.html')
+# def inventario(request):
+#     return render(request, 'inventario/index.html')

@@ -7,4 +7,8 @@ from django.contrib.auth.decorators import login_required
 
 # @login_required(redirect_field_name='')
 def index(request):
-    return render(request, 'inventario/index.html')
+    items = Producto.objects.all()
+    context = {
+        'items_prod' : items,
+    }
+    return render(request, 'inventario/index.html', context)
