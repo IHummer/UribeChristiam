@@ -5,12 +5,10 @@
 {% block inventario-activo %}active{% endblock %}
 
 {% block body %}
-
-este es el Inventario de productos
-<div class="card mb-3">
-    <div class="card-header">
-        <i class="fas fa-table icon-table-color"></i>
-        Productos registrados</div>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Inventario de productos</h6>
+    </div>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -31,9 +29,9 @@ este es el Inventario de productos
                         <td>{{ item.precio }}</td>
                     </tr>
                     {% endfor %}
-            </tbody>
+                </tbody>
             </table>
-            </div>
+        </div>
     </div>
 </div>
-    {% endblock %}
+{% endblock %}

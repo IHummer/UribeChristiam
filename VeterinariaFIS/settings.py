@@ -25,7 +25,10 @@ SECRET_KEY = 'f5=npwg&#3@2uk!1s7**fdmzd_j)+okh#89aum9f^=_o01(#v+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '192.168.1.60',
+    '127.0.0.1',
+]
 
 
 # Application definition
@@ -40,8 +43,10 @@ INSTALLED_APPS = [
     'inventory',
     'home',
     'usuarios',
-
+    'crispy_forms',
 ]
+# plantilla de la app crispy
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -1,0 +1,91 @@
+/* Aqui se encontrarán los estilos personalizados de la pag principal */
+{% load static %}
+
+body {
+    /* background-color: #f7fbfb !important; */
+    background-image: url('../pictures/background.png') !important;
+    height: 100%;
+    background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.nav-admin {
+    background-color: #006666 !important;
+}
+
+/* a.nav-admin:hover, a.nav-admin:focus,
+button.nav-admin:hover,
+button.nav-admin:focus {
+  background-color: black !important;
+} */
+
+.sidebar {
+    background-color: #001616 !important;
+}
+
+.sticky-footer {
+    background-color: #66b2b2 !important;
+    height: 50px !important;
+}
+
+.card {
+    border: 1px solid #66b2b2 !important;
+    transition: 0.3s;
+}
+
+.card-header {
+    border-bottom: 1px solid #66b2b2 !important;
+    transition: 0.5s;   
+}
+.card:hover, .card:active, .card:focus {
+    border: 1px solid #006666 !important
+}
+.card:hover .card-header {
+    border-bottom: 1px solid #006666 !important;
+    background: linear-gradient(90deg, rgba(0,102,102,1) 0%, rgba(102,178,178,1) 77%) !important;
+    color: #fff;
+}
+.card:hover .icon-table-color {
+    color: #fff !important;
+}
+/* 
+.table-bordered {
+    border: 1px solid #006666 !important;
+}
+.table thead th {
+    border-bottom: 2px solid #006666 !important;
+}
+.table-bordered td {
+  border: 1px solid #006666 !important;
+} */
+
+.btn-primary {
+    background-color: #004c4c !important;
+    border-color: #004c4c !important;
+}
+
+.icon-table-color {
+    color: #004c4c !important;
+    transition: 0.3s !important;
+}
+
+@media (min-width: 768px) {
+    .sidebar {
+        width: 170px !important;
+      }
+      footer.sticky-footer {
+        width: calc(100% - 170px);
+      }
+}
+.footer-texto {
+    color: #fff !important;
+}
+.nav-link {
+    transition: 0.3s !important;
+}
+.sidebar .nav-item .nav-link:hover {
+    color: #fff !important;
+}
+.breadcrumb {
+    background-color: #66b2b2 !important;
+}

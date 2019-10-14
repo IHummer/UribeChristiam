@@ -1,84 +1,87 @@
-/* Aqui se encontrarán los estilos personalizados de la pag principal */
-{% load static %}
-
-body {
-    /* background-color: #f7fbfb !important; */
-    background-image: url('../pictures/background.png') !important;
-    height: 100%;
-    background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+/*definiendo variables de colores*/
+:root {
+    --Bl: #fff;
+    --BlAz: #c9e3e3;
+    --AzSc: #b2d8d8;
+    --AzC: #66b2b2;
+    --Az: #008080;
+    --AzO: #006666;
+    --AzSo: #004c4c;
 }
-.nav-admin {
-    background-color: #006666 !important;
-}
-
-/* a.nav-admin:hover, a.nav-admin:focus,
-button.nav-admin:hover,
-button.nav-admin:focus {
-  background-color: black !important;
+/*imagen de fondo del body*/
+/* body {
+    background-image: url('../img/bg.png') !important; 
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    height: 100%; 
 } */
-
-.sidebar {
-    background-color: #001616 !important;
+/*fondo del contenido*/
+#content-wrapper {
+    background-image: url('../img/bg.png') !important;
+    /* background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover; */
 }
-
+/* sidebar*/
+.bg-gradient-primary {
+    background-color: var(--AzSo) !important;
+    background-image: linear-gradient(180deg, var(--AzO) 10%, var(--AzSo) 100%)
+}
+/* estilo del navbar */
+.topbar {
+    background-color: var(--AzC) !important;
+    height: 3.5rem !important;
+}
+/* color del footer */
 .sticky-footer {
-    background-color: #66b2b2 !important;
-    height: 50px !important;
+    padding: 1rem 0 !important;
+    background-color: var(--BlAz) !important;
 }
 
+/* estilo de las cartas */
 .card {
-    border: 1px solid #66b2b2 !important;
-    transition: 0.3s;
+    border: 1px solid var(--AzO);
 }
-
+.text-primary {
+    color: var(--AzSo) !important;
+    transition: all .3s ease-out;
+}
 .card-header {
-    border-bottom: 1px solid #66b2b2 !important;
-    transition: 0.3s;   
-}
-.card:hover {
-    border: 1px solid #006666 !important
+    border-bottom: 1px solid var(--AzO);
+    background: rgb(0,102,102);
+  background: linear-gradient(90deg, rgba(0,102,102,1) 0%, rgba(178,216,216,1) 50%, rgba(255,255,255,1) 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all .2s ease-out;
 }
 .card:hover .card-header {
-    border-bottom: 1px solid #006666 !important;
-    background-color: #001616 !important;
-    color: #fff !important;
+    background-position: left bottom;
 }
-/* 
+.card:hover .text-primary {
+    color: var(--Bl) !important;
+}
+/* Estilo de Tablas */
+.table {
+    color: var(--AzSo);
+}
 .table-bordered {
-    border: 1px solid #006666 !important;
+    border: 1px solid var(--Az);
 }
 .table thead th {
-    border-bottom: 2px solid #006666 !important;
+    border-bottom: 2px solid var(--Az);
 }
-.table-bordered td {
-  border: 1px solid #006666 !important;
-} */
-
+.table tbody tr {
+    transition: all .2s ease-out;
+}
+.table tbody tr:hover {
+    background-color: #008080;
+    color: #fff !important;
+}
+/* estilo botones */
 .btn-primary {
-    background-color: #004c4c !important;
-    border-color: #004c4c !important;
+    background-color: var(--AzO);
 }
-
-.icon-table-color {
-    color: #004c4c !important;
-}
-
-@media (min-width: 768px) {
-    .sidebar {
-        width: 170px !important;
-      }
-      footer.sticky-footer {
-        width: calc(100% - 170px);
-      }
-}
-.footer-texto {
-    color: #fff !important;
-}
-.nav-link {
-    transition: 0.3s !important;
-}
-.sidebar .nav-item .nav-link:hover {
-    color: #fff !important;
+.btn-primary:hover {
+    background-color: var(--AzSo);
 }
