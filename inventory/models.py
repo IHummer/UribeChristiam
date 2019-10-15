@@ -6,6 +6,12 @@ class Categoria(models.Model):
     def __str__(self):
         return self.cat_nomb
 
+class Marca(models.Model):
+    marca_nomb = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.marca_nomb
+
 class Producto(models.Model):
     prod_nomb = models.CharField(max_length=150)
     precio = models.DecimalField(max_digits=6, decimal_places=2)
@@ -16,5 +22,7 @@ class Producto(models.Model):
     )
     estado = models.CharField(max_length=20, choices=opciones_estado, default="DISPONIBLE")
     cat_prod = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    marca_nomb = models.ForeignKey(Marca, on_delete=models.CASCADE)
     def __str__(self):
-        return 'Nombre: {0} Precio: {1}'.format(self.prod_nomb, self.precio)
+        return self.prod_nomb
+
