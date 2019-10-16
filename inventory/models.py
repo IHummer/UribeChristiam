@@ -8,9 +8,14 @@ class Categoria(models.Model):
 
 class Marca(models.Model):
     marca_nomb = models.CharField(max_length=100)
-
     def __str__(self):
         return self.marca_nomb
+
+class Tipomascota(models.Model):
+    tip_mascota = models.CharField(max_length=100)
+     
+    def __str__(self): 
+        return self.tip_mascota
 
 class Producto(models.Model):
     prod_nomb = models.CharField(max_length=150)
@@ -23,6 +28,7 @@ class Producto(models.Model):
     estado = models.CharField(max_length=20, choices=opciones_estado, default="DISPONIBLE")
     cat_prod = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     marca_nomb = models.ForeignKey(Marca, on_delete=models.CASCADE)
+    tip_mascota = models.ForeignKey(Tipomascota, on_delete=models.CASCADE)
     def __str__(self):
         return self.prod_nomb
 

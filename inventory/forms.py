@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 class FormProducto(forms.ModelForm):
     class Meta:
         model = Producto
-        fields = ('prod_nomb', 'precio', 'estado', 'cat_prod')
+        fields = ('prod_nomb', 'precio', 'estado', 'cat_prod','marca_nomb','tip_mascota')
         widgets = {
             'prod_nomb': forms.TextInput(
                 attrs={
@@ -26,6 +26,16 @@ class FormProducto(forms.ModelForm):
                 attrs={
                     'oninvalid': 'this.setCustomValidity("Por favor llene el campo")',
                     'oninput': 'setCustomValidity("")'
+                    }),
+            'marca_nomb': forms.Select(
+                attrs={
+                    'oninvalid': 'this.setCustomValidity("Por favor llene el campo")',
+                    'oninput': 'setCustomValidity("")'
+                    }),
+            'tip_mascota': forms.Select(
+                attrs={
+                    'oninvalid': 'this.setCustomValidity("Por favor llene el campo")',
+                    'oninput': 'setCustomValidity("")'
                     })
             }
         labels = {
@@ -33,4 +43,6 @@ class FormProducto(forms.ModelForm):
             'precio': _('Precio en soles'),
             'estado': _('Estado del producto'),
             'cat_prod': _('Categoría del producto'),
+            'marca_nomb': _('Marca del producto'),
+            'tip_mascota': _('Tipo de mascota'),
         }
