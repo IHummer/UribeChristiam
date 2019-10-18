@@ -3,7 +3,7 @@
 
 {% block titulo %}Inventario{% endblock %}
 
-{% block inventario-activo %}active{% endblock %}
+{% block registrar-activo %}active{% endblock %}
 
 {% block body %}
 <div class="card o-hidden border-0 shadow-lg my-5">
@@ -21,31 +21,22 @@
                             <div class="col-md-6">{{ form.prod_nomb|as_crispy_field }}</div>
                             <div class="col-md-6">{{ form.precio|as_crispy_field }}</div>
                         </div>
-                        <!-- <div class="row">
-                            <div class="col-md-6"></div>
-                            <div class="col-md-6"></div>
-                    </div> -->
                         {{ form.estado|as_crispy_field }}
                         <div class="row">
-                            <div class="col-md-8">{{ form.cat_prod|as_crispy_field }}</div>
-                            <div class="col-md-4"></br><a class="btn btn-secondary btn-user btn-block">Agregar</a></div>
+                            <div class="col-10">{{ form.cat_prod|as_crispy_field }}</div>
+                            <div class="col-2 icon"><a href="{% url 'inventario:nuevo_cat' %}"><i class="fas fa-fw fa-plus-circle kek"></i></a></div>
                         </div>
-                            {{ form.marca_nomb|as_crispy_field }}
-                        {{ form.tip_mascota|as_crispy_field }}
+                        <div class="row">
+                            <div class="col-10">{{ form.marca_nomb|as_crispy_field }}</div>
+                            <div class="col-2 icon"><a href="{% url 'inventario:nuevo_marc' %}"><i class="fas fa-fw fa-plus-circle"></i></a></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-10">{{ form.tip_mascota|as_crispy_field }}</div>
+                            <div class="col-2 icon"><a href="{% url 'inventario:nuevo_tipmascota' %}"><i class="fas fa-fw fa-plus-circle"></i></a></div>
+                        </div>
 
-                        <button type="submit" class="btn btn-primary btn-user btn-block">Save person</button>
+                        <button type="submit" class="btn btn-primary btn-user btn-block">Guardar Producto</button>
                     </form>
-                    <!-- <form class="user" method="POST">
-                            {% csrf_token %}
-                        <div class="form-group">
-                            <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                placeholder="Email Address">
-                        </div>
-
-                        <a href="login.html" class="btn btn-primary btn-user btn-block">
-                            Register Account
-                        </a>
-                    </form> -->
                 </div>
             </div>
         </div>

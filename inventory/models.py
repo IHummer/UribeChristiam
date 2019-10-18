@@ -27,7 +27,7 @@ class Producto(models.Model):
     )
     estado = models.CharField(max_length=20, choices=opciones_estado, default="DISPONIBLE")
     cat_prod = models.ForeignKey(Categoria, on_delete=models.CASCADE)
-    marca_nomb = models.ForeignKey(Marca, on_delete=models.CASCADE)
+    marca_nomb = models.ForeignKey(Marca, on_delete=models.CASCADE, blank=True, null=True)
     tip_mascota = models.ForeignKey(Tipomascota, on_delete=models.CASCADE)
     def __str__(self):
         return self.prod_nomb

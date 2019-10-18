@@ -33,6 +33,9 @@
     background-color: var(--AzC) !important;
     height: 3.5rem !important;
 }
+.nav-link {
+    width: 100% !important;
+}
 /* color del footer */
 .sticky-footer {
     padding: 1rem 0 !important;
@@ -85,3 +88,50 @@
 .btn-primary:hover {
     background-color: var(--AzSo);
 }
+.btn-pad {
+    margin-top: 33px;
+    padding: 0.5rem 1rem !important;
+}
+
+.btn-secondary {
+    background: #66b2b2;
+    border: none;
+}
+.fa-plus-circle {
+    font-size: 3rem ;
+    color: #004c4c;
+    margin-top: 33px;
+    transition: all .3s ease-out;
+}
+.fa-plus-circle:hover{
+    color: #008080;
+}
+.icon {
+    text-align: center;
+}
+
+@media (max-width: 767px) {
+    .fa-plus-circle {
+        font-size: 2.75rem !important;
+    }
+
+  .sidebar {
+    width: 0;
+    overflow: hidden;
+}
+    .sidebar.toggled {
+        width: 6.5rem !important;
+        min-height: 100vh !important;
+    }
+  }
+  @media (max-width: 350px) {
+    .fa-plus-circle {
+        margin-top: 27px !important;
+        font-size: 2.75rem !important;
+        margin-left: -20px !important;
+    }
+    .fa-plus-circle.kek {
+        margin-top: 57px !important;
+    }
+  }
+

@@ -24,3 +24,22 @@ def nuevoProd(request):
     else:
         form = FormProducto()
         return render(request, 'inventario/nuevo_prod.html', {'form': form})
+
+def nuevoCatMarMasc(request, cls):
+    if request.method ==  "POST":
+        form = cls(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('inventario:nuevo_prod')
+    else:
+        form = cls()
+        return render(request, 'inventario/nuevo_prod_1.html', {'form': form})
+
+def nuevoCat(request):
+    return nuevoCatMarMasc(request, FormCategoria)
+
+def nuevoMar(request):
+    return nuevoCatMarMasc(request, FormMarca)
+
+def nuevoMasc(request):
+    return nuevoCatMarMasc(request, FormTipomascota)

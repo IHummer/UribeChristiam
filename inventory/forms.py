@@ -46,3 +46,45 @@ class FormProducto(forms.ModelForm):
             'marca_nomb': _('Marca del producto'),
             'tip_mascota': _('Tipo de mascota'),
         }
+class FormCategoria(forms.ModelForm):
+    class Meta:
+        model = Categoria
+        fields = ('cat_nomb',)
+        labels = {
+            'cat_nomb': _('Nombre de la categoría'),
+        }
+        widgets = {
+            'cat_nomb': forms.TextInput(
+                attrs={
+                    'oninvalid': 'this.setCustomValidity("Por favor llene el campo")',
+                    'oninput': 'setCustomValidity("")'
+                    }),
+        }
+class FormMarca(forms.ModelForm):
+    class Meta:
+        model = Marca
+        fields = ('marca_nomb',)
+        labels = {
+            'marca_nomb': _('Nombre de la marca'),
+        }
+        widgets = {
+            'marca_nomb': forms.TextInput(
+                attrs={
+                    'oninvalid': 'this.setCustomValidity("Por favor llene el campo")',
+                    'oninput': 'setCustomValidity("")'
+                    }),
+        }
+class FormTipomascota(forms.ModelForm):
+    class Meta:
+        model = Tipomascota
+        fields = ('tip_mascota',)
+        labels = {
+            'tip_mascota': _('Tipo de mascota'),
+        }
+        widgets = {
+            'tip_mascota': forms.TextInput(
+                attrs={
+                    'oninvalid': 'this.setCustomValidity("Por favor llene el campo")',
+                    'oninput': 'setCustomValidity("")'
+                    }),
+        }
