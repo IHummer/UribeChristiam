@@ -26,8 +26,11 @@
                             <div class="col-md-6"></div>
                     </div> -->
                         {{ form.estado|as_crispy_field }}
-                        {{ form.cat_prod|as_crispy_field }}
-                        {{ form.marca_nomb|as_crispy_field }}
+                        <div class="row">
+                            <div class="col-md-8">{{ form.cat_prod|as_crispy_field }}</div>
+                            <div class="col-md-4"></br><a class="btn btn-secondary btn-user btn-block">Agregar</a></div>
+                        </div>
+                            {{ form.marca_nomb|as_crispy_field }}
                         {{ form.tip_mascota|as_crispy_field }}
 
                         <button type="submit" class="btn btn-primary btn-user btn-block">Save person</button>
