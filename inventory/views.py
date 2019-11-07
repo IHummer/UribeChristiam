@@ -15,6 +15,7 @@ def index(request):
     return render(request, 'inventario/index.html', context)
 
 def nuevoProd(request):
+    
     if request.method ==  "POST":
         form = FormProducto(request.POST)
 
