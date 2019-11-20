@@ -11,7 +11,6 @@ def index(request):
         'productos': productos,
     }
     return render(request, 'index.html', context)
-
 # @login_required(redirect_field_name='')
 # def inventario(request):
 #     return render(request, 'inventario/index.html')

@@ -25,6 +25,7 @@ SECRET_KEY = 'f5=npwg&#3@2uk!1s7**fdmzd_j)+okh#89aum9f^=_o01(#v+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+#colocar ipv4 para crear servidor local
 ALLOWED_HOSTS = [
     '192.168.1.60',
     '127.0.0.1',
@@ -56,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'VeterinariaFIS.middlewares.LoginRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'VeterinariaFIS.urls'
@@ -130,5 +132,10 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-LOGIN_URL = ''
+
+# excepciones que no necesitan logeo
+AUTH_EXEMPT_ROUTES = ('register', 'login', 'forgot-password')
+AUTH_LOGIN_ROUTE = 'login'
+# rediraccionamiento luego de logearse
 LOGIN_REDIRECT_URL = reverse_lazy('home:index')
+LOGOUT_REDIRECT_URL = 'login'
