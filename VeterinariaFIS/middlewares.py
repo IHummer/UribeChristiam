@@ -10,8 +10,8 @@ class LoginRequiredMiddleware(MiddlewareMixin):
     """
     def process_request(self, request):
         assert hasattr(request, 'user'), """
-        The Login Required middleware needs to be after AuthenticationMiddleware.
-        Also make sure to include the template context_processor:
+        El middleware Login Rquired debe estar luego de AuthenticationMiddleware.
+        es necesario incluir el template context_processor:
         'django.contrib.auth.context_processors.auth'."""
 
         if not request.user.is_authenticated:

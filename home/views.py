@@ -1,16 +1,14 @@
 from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
+# importamos tablas para generar conteo
 from inventory.models import *
+from usuarios.models import *
 
-# Create your views here.
-# @login_required(redirect_field_name='')
 def index(request):
     productos = Producto.objects.count()
+    usuarios = Usuario.objects.count()
     context = {
         'header' : 'Inicio',
         'productos': productos,
+        'usuarios': usuarios,
     }
     return render(request, 'index.html', context)
-# @login_required(redirect_field_name='')
-# def inventario(request):
-#     return render(request, 'inventario/index.html')

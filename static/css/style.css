@@ -1,16 +1,17 @@
 /*definiendo variables de colores*/
 :root {
     --Bl: #fff;
-    --BlAz: #c9e3e3;
-    --AzSc: #b2d8d8;
-    --AzC: #66b2b2;
-    --Az: #008080;
-    --AzO: #006666;
-    --AzSo: #004c4c;
-    --Roj: #800000;
-    --Mrd: #800080;
-    --Amr: #808000;
-    --Verd: #008040;
+    --BlAz:  	#abedd8;
+    --AzSc: #abedd8;
+    --AzC: #46cdcf;
+    --Az: #3d84a8;
+    --AzO:#48466d;
+    --Za: #4375db;
+    --Roj: #db5d43;
+    --Mrd: #db43c1;
+    --Amr: #c1db43;
+    --Verd: #43dba9;
+    
 }
 /*imagen de fondo del body*/
 /* body {
@@ -20,6 +21,10 @@
     background-size: cover !important;
     height: 100%; 
 } */
+
+body {
+    color: var(--AzO);
+}
 /*fondo del contenido*/
 #content-wrapper {
     background-image: url('../img/bg.png') !important;
@@ -30,7 +35,7 @@
 /* sidebar*/
 .bg-gradient-primary {
     background-color: var(--AzSo) !important;
-    background-image: linear-gradient(180deg, var(--AzO) 10%, var(--AzSo) 100%)
+    background-image: linear-gradient(180deg, var(--AzO) 60%, var(--Az) 150%)
 }
 /* estilo del navbar */
 .topbar {
@@ -56,8 +61,8 @@
 }
 .card-header {
     border-bottom: 1px solid var(--AzO);
-    background: rgb(0,102,102);
-  background: linear-gradient(90deg, rgba(0,102,102,1) 0%, rgba(178,216,216,1) 50%, rgba(255,255,255,1) 50%);
+    background: var(--AzO);
+  background: linear-gradient(90deg, var(--AzO) 0%, var(--Az) 50%, var(--Bl) 50%);
   background-size: 200% 100%;
   background-position: right bottom;
   transition: all .2s ease-out;
@@ -103,15 +108,21 @@
     transition: all .2s ease-out;
 }
 .table tbody tr:hover {
-    background-color: #008080;
+    background-color: var(--Az);
     color: #fff !important;
 }
 /* estilo botones */
 .btn-primary {
     background-color: var(--AzO);
+    border-color: var(--AzO);
 }
 .btn-primary:hover {
-    background-color: var(--AzSo);
+    background-color: var(--AzC);
+    border-color: var(--AzO) !important;
+}
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
+    background-color: var(--AzO);
+    border-color: var(--AzO);
 }
 .btn-pad {
     margin-top: 33px;
@@ -164,8 +175,8 @@
   }
 /* tabla   */
 .page-item.active .page-link {
-background-color: #008080 !important;
-border-color: #008080 !important;
+background-color: var(--Az) !important;
+border-color: var(--Az) !important;
 }
 /* alertas */
 .topbar .dropdown-list .dropdown-header{
@@ -180,7 +191,7 @@ border-color: #008080 !important;
     background-color: var(--AzSo);
 }
 .badge-danger {
-    background-color: var(--Amr);
+    background-color: var(--Roj);
 }
 .btn-link {
     color: var(--Bl) !important;
@@ -188,4 +199,23 @@ border-color: #008080 !important;
 .float-right {
     margin-left: auto !important;
     margin-top: -50px;
+}
+
+/* iconos top */
+
+.topbar.navbar-light .navbar-nav .nav-item .nav-link {
+    color: var(--AzSc);
+}
+.topbar.navbar-light .navbar-nav .nav-item .nav-link:hover {
+    color: var(--AzO);
+  }
+
+/*titulo de cada partado*/
+.text-header {
+    color: #fff !important;
+    text-shadow: 0 0 7px #000 !important;
+  }
+/* boton configuracion*/
+.btn-configuracion{
+    text-align: center;
 }

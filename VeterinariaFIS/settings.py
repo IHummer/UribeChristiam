@@ -27,8 +27,10 @@ DEBUG = True
 
 #colocar ipv4 para crear servidor local
 ALLOWED_HOSTS = [
+    '0.0.0.0'
     '192.168.1.60',
     '127.0.0.1',
+    '190.232.50.205',
 ]
 
 
@@ -45,6 +47,8 @@ INSTALLED_APPS = [
     'home',
     'usuarios',
     'crispy_forms',
+    'phone_field',
+    'autoslug',
 ]
 # plantilla de la app crispy
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -132,6 +136,10 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+#telefono
+PHONENUMBER_DB_FORMAT = "NATIONAL"
+PHONENUMBER_DEFAULT_REGION = "PE"
 
 # excepciones que no necesitan logeo
 AUTH_EXEMPT_ROUTES = ('register', 'login', 'forgot-password')

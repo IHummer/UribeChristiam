@@ -1,16 +1,15 @@
 from django.shortcuts import render, redirect
 #añadiendo las tablas
 from .models import *
-from django.contrib.auth.decorators import login_required
+
 from .forms import *
 # Create your views here.
 
-# @login_required(redirect_field_name='')
 def index(request):
     items = Producto.objects.all()
     context = {
         'items_prod' : items,
-        'header' : 'Inventario',
+        'header' : 'Inventario de productos',
     }
     return render(request, 'inventario/index.html', context)
 
