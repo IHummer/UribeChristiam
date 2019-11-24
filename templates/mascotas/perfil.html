@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Mascotas{% endblock %}
+
+{% block mascota-activo %}active{% endblock %}
+{% block adicional-header %}{{ item.nomb_mascota }}{% endblock %}
+{% block body %}
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">{{ item.nomb_mascota }} </h6>
+    </div>
+    <div class="card-body">
+    </div>
+</div>
+{% endblock %}

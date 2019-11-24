@@ -1,7 +1,9 @@
-Proyecto universitario de un Sistema Gestor de veterinaria
-Los manuales de uso detallados se especifican en:
--link1
--link2
--link3
+Proyecto universitario de un Sistema Gestor de Veterinaria
+
+Recursos usados:
+-Python
+-Django 
+-SBAdmin2 template
+
 
 FIS - UNSLG

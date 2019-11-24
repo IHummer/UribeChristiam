@@ -56,6 +56,11 @@
           <i class="fas fa-fw fa-users"></i>
           <span>Usuarios</span></a>
       </li>
+      <li class="nav-item {% block mascota-activo %}{% endblock %}">
+          <a class="nav-link" href="{% url 'mascotas:index' %}">
+            <i class="fas fa-fw fa-dog"></i>
+            <span>Mascotas</span></a>
+        </li>
       <li class="nav-item {% block registrar-activo %}{% endblock %}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
           aria-controls="collapseTwo">
@@ -67,6 +72,7 @@
             <!-- <h6 class="collapse-header">Custom Components:</h6> -->
             <a class="collapse-item" href="{% url 'inventario:nuevo_prod' %}">Registrar productos</a>
             <a class="collapse-item" href="{% url 'usuarios:nuevo_usr' %}">Registrar usuarios</a>
+            <a class="collapse-item" href="{% url 'mascotas:nueva_mascota' %}">Registrar mascotas</a>
           </div>
         </div>
       </li>

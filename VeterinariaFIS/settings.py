@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'usuarios',
     'crispy_forms',
     'phone_field',
-    'autoslug',
+    'mascotas', 
 ]
 # plantilla de la app crispy
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -138,8 +138,13 @@ STATICFILES_DIRS = (
 )
 
 #telefono
-PHONENUMBER_DB_FORMAT = "NATIONAL"
-PHONENUMBER_DEFAULT_REGION = "PE"
+PHONENUMBER_DB_FORMAT = 'NATIONAL'
+PHONENUMBER_DEFAULT_REGION = 'PE'
+
+#media
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 
 # excepciones que no necesitan logeo
 AUTH_EXEMPT_ROUTES = ('register', 'login', 'forgot-password')

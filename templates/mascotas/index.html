@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Usuarios{% endblock %}
+
+{% block mascota-activo %}active{% endblock %}
+
+{% block body %}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Mascotas registradas</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Especie</th>
+                        <th>Género</th>
+                        <th>Raza</th>
+                        <th>Propietario</th>
+                        <th>Ver</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items_mascota %}
+                    <tr>
+                        <td>{{ item.pk }}</td>
+                        <td>{{ item.nomb_mascota }}</td>
+                        <td>{{ item.tip_mascota }}</td>
+                        <td>{{ item.genero_mascota }}</td>
+                        <td>{{ item.raza_mascota }}</td>
+                        <td>{{ item.propietario_mascota }}</td>
+                        <td><div class="btn-configuracion"><a href="{% url 'mascotas:perfil_mascota' item.id %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Detalles</a></div></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
