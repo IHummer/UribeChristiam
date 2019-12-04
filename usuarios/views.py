@@ -36,4 +36,3 @@ def perfil_usr(request, item_id):
     except Usuario.DoesNotExist:
         raise Http404("Usuario no existe")
     return render(request, 'usuarios/perfil.html', context)
-

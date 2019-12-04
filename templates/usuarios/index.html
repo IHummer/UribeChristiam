@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load phone %}
+
 
 {% block titulo %}Usuarios{% endblock %}
 
@@ -34,7 +34,7 @@ este es el apartado de usuarios registrados
                         <td>{{ item.pk }}</td>
                         <td>{{ item.nomb_usr }}</td>
                         <td>{{ item.ap_usr }}</td>
-                        <td>{{ item.cel_usr|raw_phone }}</td>
+                        <td>{{ item.cel_usr }}</td>
                         <td>{{ item.dir_usr }}</td>
                         <td><div class="btn-configuracion"><a href="{% url 'usuarios:perfil_usr' item.id %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Ver usuario</a></div></td>
                     </tr>

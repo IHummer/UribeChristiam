@@ -10,15 +10,15 @@
 
     <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-info shadow h-100 py-2 card-noborder">
-          <div class="card-body">
+        <div class="card border-left-info shadow h-100 py-2 card-noborder card-pad">
+          <div class="card-body card-index">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total de Inventario</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ productos }}</div>
+                <div class="text-xs font-weight-bold text-info text-uppercase mb-1 card-index-txt">Total de Inventario</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800 card-index-num">{{ productos }}</div>
               </div>
               <div class="col-auto">
-                <i class="fas fa-boxes fa-2x text-info"></i>
+                <i class="fas fa-boxes fa-2x text-info fa-index"></i>
               </div>
             </div>
           </div>
@@ -28,33 +28,31 @@
 
     <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-3 col-md-6 mb-4">
-      <div class="card border-left-success shadow h-100 py-2 card-noborder">
-        <div class="card-body">
+      <div class="card border-left-success shadow h-100 py-2 card-noborder card-pad">
+        <div class="card-body card-index">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total de Usuarios</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">{{ usuarios }}</div>
+              <div class="text-xs font-weight-bold text-success text-uppercase mb-1 card-index-txt">Total de Usuarios</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800 card-index-num">{{ usuarios }}</div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-users fa-2x text-success"></i>
+              <i class="fas fa-users fa-2x text-success fa-index"></i>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    
     <!-- Pending Requests Card Example -->
     <div class="col-xl-3 col-md-6 mb-4">
-      <div class="card border-left-warning shadow h-100 py-2 card-noborder">
-        <div class="card-body">
+      <div class="card border-left-warning shadow h-100 py-2 card-noborder card-pad">
+        <div class="card-body card-index">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Mascotas registradas</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">38</div>
+              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1 card-index-txt">Mascotas registradas</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800 card-index-num">38</div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-paw fa-2x text-warning"></i>
+              <i class="fas fa-paw fa-2x text-warning fa-index"></i>
             </div>
           </div>
         </div>
@@ -66,6 +64,6 @@
 {% endblock %}
 {% block picfooter %}
 
-<img class="img-fluid px-0 pl-sm-3 mt-3 float-right" style="width: 50rem;" src="{% static 'img/clinica.svg' %}" alt="">
+<img class="img-fluid px-0 pl-sm-3 mt-3 float-right" style="width: 40rem;" src="{% static 'img/clinica.svg' %}" alt="">
 
 {% endblock %}

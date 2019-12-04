@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'home',
     'usuarios',
     'crispy_forms',
-    'phone_field',
     'mascotas', 
 ]
 # plantilla de la app crispy
@@ -136,10 +135,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-
-#telefono
-PHONENUMBER_DB_FORMAT = 'NATIONAL'
-PHONENUMBER_DEFAULT_REGION = 'PE'
 
 #media
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

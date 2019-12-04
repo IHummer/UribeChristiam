@@ -20,12 +20,14 @@ class FormUsuario(forms.ModelForm):
             'tel_usr': forms.NumberInput(
                 attrs={
                     'oninvalid': 'this.setCustomValidity("Por favor llene el campo")',
-                    'oninput': 'setCustomValidity("")'
+                    'oninput': 'setCustomValidity("")',
+                    'placeholder': '056555555'
                     }),
             'cel_usr': forms.NumberInput(
                 attrs={
                     'oninvalid': 'this.setCustomValidity("Por favor llene el campo")',
-                    'oninput': 'setCustomValidity("")'
+                    'oninput': 'setCustomValidity("")',
+                    'placeholder': '956555555'
                     }),
             'dir_usr': forms.TextInput(
                 attrs={

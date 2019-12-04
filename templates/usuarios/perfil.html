@@ -1,16 +1,21 @@
 {% extends 'base.html' %}
-{% load phone %}
-
 {% block titulo %}Usuarios{% endblock %}
 
 {% block usuario-activo %}active{% endblock %}
 {% block adicional-header %}{{ item.nomb_usr }}{% endblock %}
 {% block body %}
+<div class="col-lg-6">
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">{{ item.nomb_usr }} {{ item.ap_usr }}</h6>
     </div>
     <div class="card-body">
+        <a class="font-weight-bold">Nombre completo:</a> {{ item.nomb_usr }} {{ item.ap_usr }} <br>
+        <a class="font-weight-bold">Telefono de contacto:</a><br>
+        <a class="font-weight-bold">Dirección:</a> <br>
+        <a class="font-weight-bold">Agregar FB: </a><br>
+        <a class="font-weight-bold">Contacto de wsp:</a> <br>
     </div>
+</div>
 </div>
 {% endblock %}

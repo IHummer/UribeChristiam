@@ -21,5 +21,5 @@ class Mascota(models.Model):
     propietario_mascota = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     
     def __str__(self):
-        return self.nomb_masc
+        return self.nomb_mascota
 
