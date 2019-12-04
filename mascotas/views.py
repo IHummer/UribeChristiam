@@ -10,17 +10,18 @@ def index(request):
         'header' : 'Mascotas Registrados',
     }
     return render(request, 'mascotas/index.html', context)
+    
+# Apartado independiente de crear nueva mascota
+# def nueva_mascota(request):
+#     if request.method ==  "POST":
+#         form = FormMascota(request.POST)
 
-def nueva_mascota(request):
-    if request.method ==  "POST":
-        form = FormMascota(request.POST)
-
-        if form.is_valid():
-            form.save()
-            return redirect('mascotas:index')
-    else:
-        form = FormMascota()
-        return render(request, 'mascotas/nueva_mascota.html', {'form': form})
+#         if form.is_valid():
+#             form.save()
+#             return redirect('mascotas:index')
+#     else:
+#         form = FormMascota()
+#         return render(request, 'mascotas/nueva_mascota.html', {'form': form})
 
 # vista para cada mascota
 def perfil_mascota(request, item_id):

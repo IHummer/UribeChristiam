@@ -28,34 +28,32 @@ def nuevo_usr(request):
 # vista para cada usuario
 def perfil_usr(request, item_id):
     try:
+        items = Mascota.objects.filter(propietario_mascota=item_id)
+        propietario_mascota = get_object_or_404(Usuario, pk=item_id)
+        form = FormMascota(request.POST or None)
         item = Usuario.objects.get(pk=item_id)
+        if form.is_valid():
+            nform = form.save(commit=False) # Don't save it yet
+            nform.propietario_mascota = propietario_mascota # Add person
+            nform.save() # Now save it
+            return redirect('usuarios:perfil_usr', item_id=item_id)
         context = {
         'item' : item,
         'header' : 'Perfil de Usuario: ',
+        'form' : form,
+        'items_mascota' : items,
         }
-        
     except Usuario.DoesNotExist:
         raise Http404("Usuario no existe")
     return render(request, 'usuarios/perfil.html', context)
 
+# CREAR NUEVA MASCOTA PARA USUARIO EN APARTADO
 # def nueva_mascota_perfil_usr(request, item_id):
-#     if request.method ==  "POST":
-#         form = FormMascota(request.POST)
-#         if form.is_valid():
-#             nform = form.save(commit=False)
-#             nform.instance.propietario_mascota = Usuario.objects.get(id=item_id)
-#             nform.save()
+#     propietario_mascota = get_object_or_404(Usuario, pk=item_id)
+#     form = FormMascota(request.POST or None)
+#     if form.is_valid():
+#         nform = form.save(commit=False) # Don't save it yet
+#         nform.propietario_mascota = propietario_mascota # Add person
+#         nform.save() # Now save it
 #         return redirect('mascotas:index')
-#     else:
-#         form = FormMascota()
-#         return render(request, 'mascotas/nueva_mascota_2.html', {'form': form})
-
-def nueva_mascota_perfil_usr(request, item_id):
-    propietario_mascota = get_object_or_404(Usuario, pk=item_id)
-    form = FormMascota(request.POST or None)
-    if form.is_valid():
-        nform = form.save(commit=False) # Don't save it yet
-        nform.propietario_mascota = propietario_mascota # Add person
-        nform.save() # Now save it
-        return redirect('mascotas:index')
-    return render(request, 'mascotas/nueva_mascota_2.html', {'form': form})
+#     return render(request, 'mascotas/nueva_mascota_2.html', {'form': form})

@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% block titulo %}Usuarios{% endblock %}
 
 {% block usuario-activo %}active{% endblock %}
 {% block adicional-header %}{{ item.nomb_usr }}{% endblock %}
 {% block body %}
 <div class="row">
-<div class="col-lg-6">
+<div class="col-lg-5">
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">{{ item.nomb_usr }} {{ item.ap_usr }}</h6>
@@ -19,15 +20,61 @@
     </div>
 </div>
 </div>
-<div class="col-lg-6">
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Nueva mascota</h6>
-        </div>
-        <div class="card-body">
-            <div class="btn-configuracion"><a href="{% url 'usuarios:nueva_mascota_perfil_usr' item.id %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Nueva Mascota</a></div>
+<div class="col-lg-7">
+<div class="card o-hidden border-0 shadow-lg">
+    <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="p-2">
+                    <form class="user" method="POST">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6">{{ form.nomb_mascota|as_crispy_field }}</div>
+                            <div class="col-md-6">{{ form.tip_mascota|as_crispy_field }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">{{ form.genero_mascota|as_crispy_field }}</div>
+                            <div class="col-md-4">{{ form.raza_mascota|as_crispy_field }}</div>
+                            <div class="col-md-4 div-btn-masc-perfil"><button type="submit" class="btn btn-primary btn-user btn-block btn-masc-perfil">Registrar Mascota</button></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
+</div></div>
+</div>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Mascotas registradas</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Especie</th>
+                        <th>Género</th>
+                        <th>Raza</th>
+                        <th>Ver</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items_mascota %}
+                    <tr>
+                        <td>{{ item.nomb_mascota }}</td>
+                        <td>{{ item.tip_mascota }}</td>
+                        <td>{{ item.genero_mascota }}</td>
+                        <td>{{ item.raza_mascota|default_if_none:"---" }}</td>
+                        <td><div class="btn-configuracion"><a href="{% url 'mascotas:perfil_mascota' item.id %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Detalles</a></div></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 {% endblock %}

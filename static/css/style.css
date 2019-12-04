@@ -250,3 +250,11 @@ input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+.div-btn-masc-perfil{
+    margin: auto;
+}
+
+.btn-masc-perfil{
+    width: 70%;
+    margin: auto;
+}
