@@ -4,6 +4,7 @@
 {% block usuario-activo %}active{% endblock %}
 {% block adicional-header %}{{ item.nomb_usr }}{% endblock %}
 {% block body %}
+<div class="row">
 <div class="col-lg-6">
 <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -17,5 +18,16 @@
         <a class="font-weight-bold">Contacto de wsp:</a> <br>
     </div>
 </div>
+</div>
+<div class="col-lg-6">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Nueva mascota</h6>
+        </div>
+        <div class="card-body">
+            <div class="btn-configuracion"><a href="{% url 'usuarios:nueva_mascota_perfil_usr' item.id %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Nueva Mascota</a></div>
+        </div>
+    </div>
+    </div>
 </div>
 {% endblock %}

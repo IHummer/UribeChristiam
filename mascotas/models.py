@@ -17,7 +17,7 @@ class Mascota(models.Model):
         ('HEMBRA', 'Hembra')
     )
     genero_mascota = models.CharField(max_length=10, choices=opciones_genero, default="MACHO")
-    raza_mascota = models.ForeignKey(RazaMascota, on_delete=models.CASCADE)
+    raza_mascota = models.ForeignKey(RazaMascota, on_delete=models.CASCADE, blank=True, null=True)
     propietario_mascota = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     
     def __str__(self):
