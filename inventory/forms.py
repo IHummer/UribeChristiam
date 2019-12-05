@@ -14,7 +14,7 @@ class FormProducto(forms.ModelForm):
                     }),
             'precio': forms.NumberInput(
                 attrs={
-                    'oninvalid': 'this.setCustomValidity("Por favor llene el campo")',
+                    'oninvalid': 'this.setCustomValidity("Corriga, sólo número entero o decimal, ejemplo: 10.50")',
                     'oninput': 'setCustomValidity("")'
                     }),
             'estado': forms.Select(
@@ -40,7 +40,7 @@ class FormProducto(forms.ModelForm):
             }
         labels = {
             'prod_nomb': _('Nombre del producto'),
-            'precio': _('Precio en soles'),
+            'precio': _('Precio en soles (S/.)'),
             'estado': _('Estado del producto'),
             'cat_prod': _('Categoría del producto'),
             'marca_nomb': _('Marca del producto'),

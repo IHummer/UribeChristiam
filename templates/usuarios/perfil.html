@@ -16,17 +16,17 @@
         <a class="font-weight-bold">Telefono de contacto:</a><br>
         <a class="font-weight-bold">Dirección:</a> <br>
         <a class="font-weight-bold">Agregar FB: </a><br>
-        <a class="font-weight-bold">Contacto de wsp:</a> <br>
+        <a class="font-weight-bold">Contacto de wsp: <a href="https://wa.me/51{{ item.cel_usr }}">Enviar mensaje</a></a> <br>
     </div>
 </div>
 </div>
-<div class="col-lg-7">
+<div class="col-lg-7 mb-4">
 <div class="card o-hidden border-0 shadow-lg">
     <div class="card-body p-0">
         <!-- Nested Row within Card Body -->
         <div class="row">
             <div class="col-lg-12">
-                <div class="p-2">
+                <div class="p-4">
                     <form class="user" method="POST">
                         {% csrf_token %}
                         <div class="row">
@@ -69,7 +69,7 @@
                         <td>{{ item.tip_mascota }}</td>
                         <td>{{ item.genero_mascota }}</td>
                         <td>{{ item.raza_mascota|default_if_none:"---" }}</td>
-                        <td><div class="btn-configuracion"><a href="{% url 'mascotas:perfil_mascota' item.id %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Detalles</a></div></td>
+                        <td><div class="btn-configuracion"><a href="{% url 'mascotas:perfil_mascota' item.id %}" class=" d-sm-inline-block btn btn-sm btn-primary shadow-sm">Detalles</a></div></td>
                     </tr>
                     {% endfor %}
                 </tbody>

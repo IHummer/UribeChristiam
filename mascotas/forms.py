@@ -22,7 +22,7 @@ class FormMascota(forms.ModelForm):
                     'oninvalid': 'this.setCustomValidity("Por favor llene el campo")',
                     'oninput': 'setCustomValidity("")'
                     }),
-            'raza_mascota': forms.Select(
+            'raza_mascota': forms.TextInput(
                 attrs={
                     'oninvalid': 'this.setCustomValidity("Por favor llene el campo")',
                     'oninput': 'setCustomValidity("")'
