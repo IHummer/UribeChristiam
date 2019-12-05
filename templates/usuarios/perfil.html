@@ -13,10 +13,16 @@
     </div>
     <div class="card-body">
         <a class="font-weight-bold">Nombre completo:</a> {{ item.nomb_usr }} {{ item.ap_usr }} <br>
-        <a class="font-weight-bold">Telefono de contacto:</a><br>
-        <a class="font-weight-bold">Dirección:</a> <br>
-        <a class="font-weight-bold">Agregar FB: </a><br>
-        <a class="font-weight-bold">Contacto de wsp: <a href="https://wa.me/51{{ item.cel_usr }}">Enviar mensaje</a></a> <br>
+        <a class="font-weight-bold">Celular de contacto:</a> {{ item.cel_usr }}<br>
+        {% if item.tel_usr == None %}
+        <a class="font-weight-bold">Número de telefono: </a>No proveido<br>
+        {% else %}
+        <a class="font-weight-bold">Número de telefono: </a>{{ item.tel_usr }}<br>
+        {% endif %}
+        <a class="font-weight-bold">Número de Mascotas registradas: </a>{{ num_mascotas }}<br>
+        <a class="font-weight-bold">Dirección: </a>{{ item.dir_usr }}<br>
+        <a class="font-weight-bold">Contactar por wsp: <a href="https://wa.me/51{{ item.cel_usr }}"><div class="btn btn-wsp btn-circle"><i class="fab fa-whatsapp icon-wsp"></i></div></a></a> <br>
+        <div class="btn-configuracion"><a href="{% url 'mascotas:perfil_mascota' item.id %}" class=" d-sm-inline-block btn btn-sm btn-primary shadow-sm mt-3">Editar valores</a></div>
     </div>
 </div>
 </div>

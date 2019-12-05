@@ -29,6 +29,7 @@ def nuevo_usr(request):
 def perfil_usr(request, item_id):
     try:
         items = Mascota.objects.filter(propietario_mascota=item_id)
+        num_mascotas = Mascota.objects.filter(propietario_mascota=item_id).count()
         propietario_mascota = get_object_or_404(Usuario, pk=item_id)
         form = FormMascota(request.POST or None)
         item = Usuario.objects.get(pk=item_id)
@@ -42,6 +43,7 @@ def perfil_usr(request, item_id):
         'header' : 'Perfil de Usuario: ',
         'form' : form,
         'items_mascota' : items,
+        'num_mascotas' : num_mascotas,
         }
     except Usuario.DoesNotExist:
         raise Http404("Usuario no existe")

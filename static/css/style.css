@@ -242,6 +242,15 @@ border-color: var(--Az) !important;
     padding: 0 !important;
 }
 
+/* boton wsp */
+.btn-wsp{
+    background-color: var(--Verd);
+    border-color: var(--Verd);
+}
+.icon-wsp{
+    color: var(--Bl);
+}
+
 input[type='number'] {
     -moz-appearance:textfield;
 }/* Webkit browsers like Safari and Chrome */
