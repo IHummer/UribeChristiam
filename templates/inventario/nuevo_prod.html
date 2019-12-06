@@ -18,24 +18,22 @@
                     <form class="user" method="POST">
                         {% csrf_token %}
                         <div class="row">
-                            <div class="col-md-6">{{ formproducto.prod_nomb|as_crispy_field }}</div>
-                            <div class="col-md-6">{{ formproducto.precio|as_crispy_field }}</div>
+                            <div class="col-md-8">{{ formproducto.prod_nomb|as_crispy_field }}</div>
+                            <div class="col-md-4">{{ formproducto.precio|as_crispy_field }}</div>
                         </div>
                         {{ formproducto.estado|as_crispy_field }}
                         <div class="row">
-                            <div class="col-10">{{ formproducto.cat_prod|as_crispy_field }}</div>
+                            <div class="col-md-3 col-sm-10 col-xs-8">{{ formproducto.cat_prod|as_crispy_field }}</div>
                             <!-- <div class="col-2 icon"><a href="% url 'inventario:nuevo_cat' %"><i class="fas fa-fw fa-plus-circle kek"></i></a></div> -->
-                            <div class="col-2 icon"><a href="#" data-toggle="modal" data-target="#nuevaCat"><i class="fas fa-fw fa-plus-circle kek"></i></a></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-10">{{ formproducto.marca_nomb|as_crispy_field }}</div>
+                            <div class="col-md-1 col-sm-2 icon col-xs-2"><a href="#" data-toggle="modal" data-target="#nuevaCat"><i class="fas fa-fw fa-plus-circle kek"></i></a></div>
+                        
+                            <div class="col-md-3 col-sm-10 col-xs-8">{{ formproducto.marca_nomb|as_crispy_field }}</div>
                             <!-- <div class="col-2 icon"><a href="% url 'inventario:nuevo_marc' %"><i class="fas fa-fw fa-plus-circle"></i></a></div> -->
-                            <div class="col-2 icon"><a href="#" data-toggle="modal" data-target="#nuevaMarc"><i class="fas fa-fw fa-plus-circle"></i></a></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-10">{{ formproducto.tip_mascota|as_crispy_field }}</div>
+                            <div class="col-md-1 col-sm-2 icon col-xs-2"><a href="#" data-toggle="modal" data-target="#nuevaMarc"><i class="fas fa-fw fa-plus-circle"></i></a></div>
+                        
+                            <div class="col-md-3 col-sm-10 col-xs-8">{{ formproducto.tip_mascota|as_crispy_field }}</div>
                             <!-- <div class="col-2 icon"><a href="% url 'inventario:nuevo_tipmascota' %"><i class="fas fa-fw fa-plus-circle"></i></a></div> -->
-                            <div class="col-2 icon"><a href="#" data-toggle="modal" data-target="#nuevaMasc"><i class="fas fa-fw fa-plus-circle"></i></a></div>
+                            <div class="col-md-1 col-sm-2 icon col-xs-2"><a href="#" data-toggle="modal" data-target="#nuevaMasc"><i class="fas fa-fw fa-plus-circle"></i></a></div>
                         </div>
 
                         <button type="submit" class="btn btn-primary btn-user btn-block">Guardar Producto</button>
