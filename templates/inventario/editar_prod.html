@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 
-{% block titulo %}Nuevo Usuario{% endblock %}
+{% block titulo %}Inventario{% endblock %}
 
 {% block registrar-activo %}active{% endblock %}
 
@@ -18,14 +18,19 @@
                     <form class="user" method="POST">
                         {% csrf_token %}
                         <div class="row">
-                            <div class="col-md-6">{{ form.nomb_usr|as_crispy_field }}</div>
-                            <div class="col-md-6">{{ form.ap_usr|as_crispy_field }}</div>
+                            <div class="col-md-8">{{ form.prod_nomb|as_crispy_field }}</div>
+                            <div class="col-md-4">{{ form.precio|as_crispy_field }}</div>
                         </div>
+                        {{ form.estado|as_crispy_field }}
                         <div class="row">
-                            <div class="col-md-4">{{ form.tel_usr|as_crispy_field }}</div>
-                            <div class="col-md-4">{{ form.cel_usr|as_crispy_field }}</div>
-                            <div class="col-md-4">{{ form.dir_usr|as_crispy_field }}</div>
+                            <div class="col-md-4">{{ form.cat_prod|as_crispy_field }}</div>
+                            
+                            <div class="col-md-4">{{ form.marca_nomb|as_crispy_field }}</div>
+                            
+                            <div class="col-md-4">{{ form.tip_mascota|as_crispy_field }}</div>
+                            
                         </div>
+
                         <button type="submit" class="btn btn-primary btn-user btn-block">{{ tipo_boton }}</button>
                     </form>
                 </div>
@@ -33,4 +38,5 @@
         </div>
     </div>
 </div>
+
 {% endblock %}

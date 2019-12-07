@@ -61,7 +61,7 @@
         </li>
         <li class="list-group-item">
           <strong>Assigned to:</strong>
-          {% if task.assigned_to %} {{ task.assigned_to.get_full_name }} {% else %} Anyone {% endif %}
+          {% if task.assigned_to %} {{ task.assigned_to.ap_usr }} {{ task.assigned_to.nomb_usr }} {% else %} Anyone {% endif %}
         </li>
         <li class="list-group-item">
           <strong>Reported by:</strong> {{ task.created_by.get_full_name }}

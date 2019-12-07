@@ -13,7 +13,7 @@
             <div class="col-lg-12">
                 <div class="p-5">
                     <div class="text-center">
-                        <h1 class="h4 text-gray-900 mb-4">Nuevo Producto!</h1>
+                        <h1 class="h4 text-gray-900 mb-4">{{ tipo_titulo }}</h1>
                     </div>
                     <form class="user" method="POST">
                         {% csrf_token %}
@@ -36,7 +36,7 @@
                             <div class="col-md-1 col-sm-2 icon col-xs-2"><a href="#" data-toggle="modal" data-target="#nuevaMasc"><i class="fas fa-fw fa-plus-circle"></i></a></div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-user btn-block">Guardar Producto</button>
+                        <button type="submit" class="btn btn-primary btn-user btn-block">{{ tipo_boton }}</button>
                     </form>
                 </div>
             </div>

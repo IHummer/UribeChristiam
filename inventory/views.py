@@ -41,11 +41,34 @@ def nuevoProd(request):
             'formcat' : formcat,
             'formmarc' : formmarc,
             'formmasc' : formmasc,
+            'tipo_titulo' : 'Nuevo Producto!',
+            'tipo_boton' : 'Guardar Producto',
         }
         return render(request, 'inventario/nuevo_prod.html', context)
 
+def editar_prod(request, item_id):
+    item = Producto.objects.get(pk=item_id)
+    if request.method == "POST":
+        form = FormProducto(request.POST, instance=item)
+        if form.is_valid():
+            form.save()
+            return redirect('inventario:index')
+    else:
+        form = FormProducto(instance=item)
+        context = {
+            'form' : form,
+            'tipo_titulo' : 'Editar Producto',
+            'tipo_boton' : 'Guardar Cambios',
+        }
+        return render(request, 'inventario/editar_prod.html', context)
 
-
+def eliminar_prod(request, item_id):
+    Producto.objects.filter(pk=item_id).delete()
+    items = Producto.objects.all()
+    context = {
+        'items': items,
+    }
+    return redirect('inventario:index')
 
 
 # def nuevoCatMarMasc(request, cls):

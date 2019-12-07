@@ -21,8 +21,26 @@
         {% endif %}
         <a class="font-weight-bold">Número de Mascotas registradas: </a>{{ num_mascotas }}<br>
         <a class="font-weight-bold">Dirección: </a>{{ item.dir_usr }}<br>
-        <a class="font-weight-bold">Contactar por wsp: <a href="https://wa.me/51{{ item.cel_usr }}"><div class="btn btn-wsp btn-circle"><i class="fab fa-whatsapp icon-wsp"></i></div></a></a> <br>
-        <div class="btn-configuracion"><a href="{% url 'mascotas:perfil_mascota' item.id %}" class=" d-sm-inline-block btn btn-sm btn-primary shadow-sm mt-3">Editar valores</a></div>
+        
+            <div class="row">
+                <div class="col-4">
+                        <a href="https://wa.me/51{{ item.cel_usr }}" class="btn btn-success btn-icon-split btn-sm mt-3">
+                                <span class="icon text-white-50">
+                                  <i class="fab fa-whatsapp icon-wsp"></i>
+                                </span>
+                                <span class="text">Contactar</span>
+                              </a>
+                </div>
+                <div class="col-4 btn-configuracion">
+                    <a href="{% url 'usuarios:editar_usr' item.id %}" class=" d-sm-inline-block btn btn-sm btn-primary shadow-sm mt-3">Editar valores</a>
+                </div>
+                <div class="col-4">
+                    <a href="#" data-toggle="modal" data-target="#eliminar_usr" class=" d-sm-inline-block btn btn-sm btn-danger shadow-sm mt-3">Eliminar Usuario</a>
+                </div>
+                
+            </div>
+        
+
     </div>
 </div>
 </div>
@@ -83,4 +101,23 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="eliminar_usr" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">¿Seguro que deseas eliminar?</h5>
+                          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">Selecciona "Eliminar" para eliminar permanentemente el usuario: {{ item.nomb_usr }} {{ item.ap_usr }}.</div>
+                        <div class="modal-footer">
+                          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                          <a class="btn btn-danger" href="{% url 'usuarios:eliminar_usr' item.pk %}">Eliminar</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 {% endblock %}

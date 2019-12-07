@@ -23,7 +23,12 @@ def nuevo_usr(request):
             return redirect('usuarios:index')
     else:
         form = FormUsuario()
-        return render(request, 'usuarios/nuevo_usr.html', {'form': form})
+        context = {
+            'tipo_titulo' : 'Nuevo Usuario!',
+            'tipo_boton' : 'Registrar Usuario',
+            'form' : form,
+        }
+        return render(request, 'usuarios/nuevo_usr.html', context)
 
 # vista para cada usuario
 def perfil_usr(request, item_id):
@@ -48,6 +53,32 @@ def perfil_usr(request, item_id):
     except Usuario.DoesNotExist:
         raise Http404("Usuario no existe")
     return render(request, 'usuarios/perfil.html', context)
+
+def editar_usr(request, item_id):
+    item = Usuario.objects.get(pk=item_id)
+    if request.method == "POST":
+        form = FormUsuario(request.POST, instance=item)
+        if form.is_valid():
+            form.save()
+            return redirect('usuarios:perfil_usr', item_id=item_id)
+        
+    else:
+        form = FormUsuario(instance=item)
+        context = {
+            'tipo_titulo' : 'Editar Usuario!',
+            'tipo_boton' : 'Guardar Cambios',
+            'form' : form,
+        }
+        return render(request, 'usuarios/nuevo_usr.html', context)
+
+def eliminar_usr(request, item_id):
+    Usuario.objects.filter(pk=item_id).delete()
+    items = Usuario.objects.all()
+    context = {
+        'items': items,
+    }
+    return redirect('usuarios:index')
+
 
 # CREAR NUEVA MASCOTA PARA USUARIO EN APARTADO
 # def nueva_mascota_perfil_usr(request, item_id):

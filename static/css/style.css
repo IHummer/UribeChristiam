@@ -118,7 +118,9 @@ body {
 }
 .btn-primary:hover {
     background-color: var(--AzC);
-    border-color: var(--AzO) !important;
+    border-color: var(--AzC) !important;
+    color: var(--AzO) !important;
+    text-transform: uppercase;
 }
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
     background-color: var(--AzO);
