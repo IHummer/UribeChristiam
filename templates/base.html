@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="{% static 'css/sb-admin-2.css' %}">
   <!-- estilos personalizados -->
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  {% block extrahead %}{% endblock extrahead %}
 </head>
 
 
@@ -60,6 +61,11 @@
           <a class="nav-link" href="{% url 'mascotas:index' %}">
             <i class="fas fa-fw fa-dog"></i>
             <span>Mascotas</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'todo:lists' %}">
+            <i class="fas fa-fw fa-dog"></i>
+            <span>todo</span></a>
         </li>
       <li class="nav-item {% block registrar-activo %}{% endblock %}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
@@ -304,7 +310,7 @@
   <script src="{% static 'vendor/datatables/dataTables.bootstrap4.js' %}"></script>
   <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
   <script src="{% static 'js/demo/datatables-demo.js' %}"></script>
-
+  {% block extra_js %}{% endblock extra_js %}
   <!-- JS de los graficos -->
   <!-- <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script> -->
   <!-- Page level custom scripts -->

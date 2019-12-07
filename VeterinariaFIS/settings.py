@@ -43,12 +43,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'inventory',
     'home',
     'usuarios',
     'crispy_forms',
     'mascotas', 
+    'bootstrap4',
+    'todo',
 ]
+
+SITE_ID = 1
 # plantilla de la app crispy
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
