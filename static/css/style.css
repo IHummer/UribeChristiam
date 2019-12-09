@@ -11,6 +11,7 @@
     --Mrd: #db43c1;
     --Amr: #c1db43;
     --Verd: #43dba9;
+    --AzSo: #2b2a41;
     
 }
 /*imagen de fondo del body*/
@@ -56,13 +57,13 @@ body {
     border: 1px solid var(--AzO);
 }
 .text-primary {
-    color: var(--AzSo) !important;
-    transition: all .3s ease-out;
+    color: var(--Bl) !important;
+    /* transition: all .3s ease-out; */
 }
 .card-header {
     border-bottom: 1px solid var(--AzO);
     background: var(--AzO);
-  background: linear-gradient(90deg, var(--AzO) 0%, var(--Az) 50%, var(--Bl) 50%);
+  background: linear-gradient(90deg, var(--AzO) 0%, var(--Az) 50%, var(--AzO) 50%);
   background-size: 200% 100%;
   background-position: right bottom;
   transition: all .2s ease-out;
@@ -70,9 +71,9 @@ body {
 .card:hover .card-header {
     background-position: left bottom;
 }
-.card:hover .text-primary {
+/* .card:hover .text-primary {
     color: var(--Bl) !important;
-}
+} */
 .border-left-info {
     border-left: 0.25rem solid var(--AzC) !important;
 }
@@ -108,8 +109,8 @@ body {
     transition: all .2s ease-out;
 }
 .table tbody tr:hover {
-    background-color: var(--Az);
-    color: #fff !important;
+    background-color: var(--AzSc);
+    /* color: #fff !important; */
 }
 /* estilo botones */
 .btn-primary {
@@ -117,10 +118,9 @@ body {
     border-color: var(--AzO);
 }
 .btn-primary:hover {
-    background-color: var(--AzC);
-    border-color: var(--AzC) !important;
-    color: var(--AzO) !important;
-    text-transform: uppercase;
+    background-color: var(--AzSo);
+    border-color: var(--Az) !important;
+    color: var(--Bl) !important;
 }
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
     background-color: var(--AzO);

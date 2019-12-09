@@ -2,13 +2,12 @@ from django.shortcuts import render, redirect
 #añadiendo las tablas
 from .models import *
 from .forms import *
-# Create your views here.
 
 def index(request):
     items = Producto.objects.all()
     context = {
         'items_prod' : items,
-        'header' : 'Inventario de productos',
+        'header' : 'Inventario de productos'
     }
     return render(request, 'inventario/index.html', context)
 

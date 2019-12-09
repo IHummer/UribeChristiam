@@ -15,7 +15,8 @@ class FormProducto(forms.ModelForm):
             'precio': forms.NumberInput(
                 attrs={
                     'oninvalid': 'this.setCustomValidity("Corriga, sólo número entero o decimal, ejemplo: 10.50")',
-                    'oninput': 'setCustomValidity("")'
+                    'oninput': 'setCustomValidity("")',
+                    'placeholder' : '15.50'
                     }),
             'estado': forms.Select(
                 attrs={

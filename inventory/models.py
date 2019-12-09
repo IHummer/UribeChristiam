@@ -19,7 +19,7 @@ class Tipomascota(models.Model):
 
 class Producto(models.Model):
     prod_nomb = models.CharField(max_length=150)
-    precio = models.DecimalField(max_digits=6, decimal_places=2)
+    precio = models.DecimalField(max_digits=6, decimal_places=2, help_text='Solo número')
     opciones_estado = (
         ('DISPONIBLE', 'Listo para ser vendido'),
         ('AGOTADO', 'Producto agotado'),
