@@ -16,7 +16,7 @@ def index(request):
     num_agotados = Producto.objects.filter(estado='AGOTADO').count()
     # variables para tareas despues de hoy
     hoy = timezone.now()
-    tasks_act = Task.objects.filter(completed=False, due_date__gt=hoy)
+    tasks_act = Task.objects.filter(completed=False, due_date__gt=hoy).order_by('due_date')
     # primeras 3 tareas
     tasks_primeras = Task.objects.filter()[:3]
 
