@@ -14,9 +14,10 @@ def index(request):
     # tabla y número de items agotados
     items_agotados = Producto.objects.filter(Q(estado='AGOTADO')|Q(estado='REABASTECIENDO')).order_by('estado')
     num_agotados = Producto.objects.filter(estado='AGOTADO').count()
+    num_criticos = Producto.objects.filter(estado='REABASTECIENDO').count()
     # variables para tareas despues de hoy
     hoy = timezone.now()
-    tasks_act = Task.objects.filter(completed=False, due_date__gt=hoy).order_by('due_date')
+    tasks_act = Task.objects.filter(completed=False, due_date__gt=hoy).order_by('due_date')[:5]
     # primeras 3 tareas
     tasks_primeras = Task.objects.filter()[:3]
 
@@ -28,5 +29,6 @@ def index(request):
         'items_agotados' : items_agotados,
         'num_agotados' : num_agotados,
         'tasks_act' : tasks_act,
+        'num_criticos': num_criticos,
     }
     return render(request, 'index.html', context)
