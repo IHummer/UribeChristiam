@@ -60,13 +60,29 @@
       </div>
     </div>
   </div>
+  <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-danger shadow h-100 py-2 card-noborder card-pad">
+        <div class="card-body card-index">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-danger text-uppercase mb-1 card-index-txt">Eventos pendientes
+              </div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800 card-index-num">{{ num_tasks_act }}</div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-tasks fa-2x text-danger fa-index"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
 <div class="row">
   {% if num_agotados != 0 or num_criticos != 0 %}
   <div class="col-6">
     <div class="card shadow mb-4">
       <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Productos Agotados</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Productos necesitados de repocisión</h6>
       </div>
       <div class="card-body">
         <div class="table-responsive">
@@ -97,7 +113,7 @@
                         style="color: var(--Bl);">Agotado</a></div>
                     {% else%}
                     <div class="btn-configuracion"><a class="d-sm-inline-block btn btn-sm btn-warning shadow-sm"
-                        style="color: var(--Bl);">Reabasteciendo</a></div>
+                        style="color: var(--Bl);">Bajo stock</a></div>
                     {% endif %}
                 </td>
                 
@@ -111,7 +127,7 @@
   </div>
 
   {% endif %}
-
+{% if num_tasks_act != 0 %}
   <div class="col-6">
     <div class="card shadow mb-4">
       <div class="card-header py-3">
@@ -134,7 +150,9 @@
               {% for item in tasks_act %}
               <tr>
                 <!-- <td>{{ item.pk }}</td> -->
-                <td>{{ item.title }}</td>
+                <td>
+                  <a href="{% url 'todo:task_detail' item.id %}">
+                  {{ item.title }}</a></td>
                 <td>{{ item.due_date }}</td>
                 <td>{{ item.assigned_to }}</td>
 
@@ -148,8 +166,9 @@
       </div>
     </div>
   </div>
-</div>
 
+{% endif %}
+</div>
 {% endblock %}
 {% block picfooter %}
 

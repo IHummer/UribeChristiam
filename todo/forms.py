@@ -3,6 +3,7 @@ from django.contrib.auth.models import Group
 from django.forms import ModelForm
 from todo.models import Task, TaskList
 from usuarios.models import *
+from tempus_dominus.widgets import DatePicker, TimePicker, DateTimePicker
 
 class AddTaskListForm(ModelForm):
     """The picklist showing allowable groups to which a new list can be added
@@ -11,12 +12,7 @@ class AddTaskListForm(ModelForm):
 
     def __init__(self, user, *args, **kwargs):
         super(AddTaskListForm, self).__init__(*args, **kwargs)
-        self.fields["group"].queryset = Group.objects.filter(user=user)
-        self.fields["group"].widget.attrs = {
-            "id": "id_group",
-            "class": "custom-select mb-3",
-            "name": "group",
-        }
+        
 
     class Meta:
         model = TaskList
@@ -30,7 +26,7 @@ class AddEditTaskForm(ModelForm):
     def __init__(self, user, *args, **kwargs):
         super().__init__(*args, **kwargs)
         task_list = kwargs.get("initial").get("task_list")
-        members = task_list.group.user_set.all()
+        # members = task_list.group.user_set.all()
         usuarios = Usuario.objects.all()
         self.fields["assigned_to"].queryset = usuarios
         self.fields["assigned_to"].label_from_instance = lambda obj: "%s" % (
@@ -43,8 +39,20 @@ class AddEditTaskForm(ModelForm):
         }
         self.fields["task_list"].value = kwargs["initial"]["task_list"].id
 
-    due_date = forms.DateField(widget=forms.DateInput(attrs={"type": "date"}), required=False)
-
+    # due_date = forms.DateTimeField(widget=forms.DateTimeInput(attrs={"type": "date"}), required=False)
+    due_date = forms.DateTimeField(
+        widget=DateTimePicker(
+            options={
+                'useCurrent': True,
+                'collapse': False,
+                'locale': 'es',
+            },
+            attrs={
+                'append': 'fa fa-calendar',
+                'icon_toggle': True
+            }
+        ), required=True
+    )
     title = forms.CharField(widget=forms.widgets.TextInput())
 
     note = forms.CharField(widget=forms.Textarea(), required=False)

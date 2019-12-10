@@ -1,7 +1,7 @@
-{% extends "base.html" %}
+{% extends "todo/todo_base.html" %}
 {% block title %}Delete list{% endblock %}
 
-{% block body %}
+{% block todo %}
   {% if user.is_staff %}
   <h1>Delete entire list: {{ task_list.name }} ?</h1>
 

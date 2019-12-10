@@ -27,10 +27,6 @@ def staff_check(user):
         return True
 
 
-def user_can_read_task(task, user):
-    return task.task_list.group in user.groups.all() or user.is_superuser
-
-
 def todo_get_backend(task):
     """Returns a mail backend for some task"""
     mail_backends = getattr(settings, "TODO_MAIL_BACKENDS", None)

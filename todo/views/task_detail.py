@@ -19,7 +19,6 @@ from todo.utils import (
     send_email_to_thread_participants,
     staff_check,
     toggle_task_completed,
-    user_can_read_task,
 )
 
 if HAS_TASK_MERGE:
@@ -55,8 +54,7 @@ def task_detail(request, task_id: int) -> HttpResponse:
 
     # Ensure user has permission to view task. Superusers can view all tasks.
     # Get the group this task belongs to, and check whether current user is a member of that group.
-    if not user_can_read_task(task, request.user):
-        raise PermissionDenied
+
 
     # Handle task merging
     if not HAS_TASK_MERGE:
@@ -78,8 +76,7 @@ def task_detail(request, task_id: int) -> HttpResponse:
             merge_form = MergeForm(request.POST)
             if merge_form.is_valid():
                 merge_target = merge_form.cleaned_data["merge_target"]
-            if not user_can_read_task(merge_target, request.user):
-                raise PermissionDenied
+  
 
             task.merge_into(merge_target)
             return redirect(reverse("todo:task_detail", kwargs={"task_id": merge_target.pk}))

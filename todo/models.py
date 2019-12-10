@@ -3,9 +3,10 @@ from __future__ import unicode_literals
 import datetime
 import os
 import textwrap
+import pytz
 
 from django.conf import settings
-from django.contrib.auth.models import Group
+# from django.contrib.auth.models import Group
 from django.db import DEFAULT_DB_ALIAS, models
 from django.db.transaction import Atomic, get_connection
 from django.urls import reverse
@@ -55,7 +56,6 @@ class LockedAtomicTransaction(Atomic):
 class TaskList(models.Model):
     name = models.CharField(max_length=60)
     slug = models.SlugField(default="")
-    group = models.ForeignKey(Group, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -65,14 +65,14 @@ class TaskList(models.Model):
         verbose_name_plural = "Task Lists"
 
         # Prevents (at the database level) creation of two lists with the same slug in the same group
-        unique_together = ("group", "slug")
+        unique_together = ("name", "slug")
 
 
 class Task(models.Model):
     title = models.CharField(max_length=140)
     task_list = models.ForeignKey(TaskList, on_delete=models.CASCADE, null=True)
     created_date = models.DateField(default=timezone.now, blank=True, null=True)
-    due_date = models.DateField(blank=True, null=True)
+    due_date = models.DateTimeField(blank=False, null=False, unique=True)
     completed = models.BooleanField(default=False)
     completed_date = models.DateField(blank=True, null=True)
     created_by = models.ForeignKey(
@@ -95,7 +95,7 @@ class Task(models.Model):
     # Has due date for an instance of this object passed?
     def overdue_status(self):
         "Returns whether the Tasks's due date has passed or not."
-        if self.due_date and datetime.date.today() > self.due_date:
+        if self.due_date and datetime.datetime.now(tz=pytz.UTC) > self.due_date:
             return True
 
     def __str__(self):

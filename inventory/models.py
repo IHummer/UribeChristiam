@@ -23,7 +23,7 @@ class Producto(models.Model):
     opciones_estado = (
         ('DISPONIBLE', 'Listo para ser vendido'),
         ('AGOTADO', 'Producto agotado'),
-        ('REABASTECIENDO', 'Reabastecimiento en proceso')
+        ('BAJO_STOCK', 'Bajo stock del producto')
     )
     estado = models.CharField(max_length=20, choices=opciones_estado, default="DISPONIBLE")
     cat_prod = models.ForeignKey(Categoria, on_delete=models.CASCADE)

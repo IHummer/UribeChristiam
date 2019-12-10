@@ -1,3 +1,5 @@
+import pytz
+import datetime
 from django.shortcuts import render
 # importamos tablas para generar conteo
 from inventory.models import *
@@ -12,12 +14,13 @@ def index(request):
     usuarios = Usuario.objects.count()
     mascotas = Mascota.objects.count()
     # tabla y número de items agotados
-    items_agotados = Producto.objects.filter(Q(estado='AGOTADO')|Q(estado='REABASTECIENDO')).order_by('estado')
+    items_agotados = Producto.objects.filter(Q(estado='AGOTADO')|Q(estado='BAJO_STOCK')).order_by('estado')
     num_agotados = Producto.objects.filter(estado='AGOTADO').count()
-    num_criticos = Producto.objects.filter(estado='REABASTECIENDO').count()
+    num_criticos = Producto.objects.filter(estado='BAJO_STOCK').count()
     # variables para tareas despues de hoy
-    hoy = timezone.now()
+    hoy = datetime.datetime.now(tz=pytz.UTC)
     tasks_act = Task.objects.filter(completed=False, due_date__gt=hoy).order_by('due_date')[:5]
+    num_tasks_act = tasks_act.count()
     # primeras 3 tareas
     tasks_primeras = Task.objects.filter()[:3]
 
@@ -30,5 +33,6 @@ def index(request):
         'num_agotados' : num_agotados,
         'tasks_act' : tasks_act,
         'num_criticos': num_criticos,
+        'num_tasks_act' : num_tasks_act, 
     }
     return render(request, 'index.html', context)

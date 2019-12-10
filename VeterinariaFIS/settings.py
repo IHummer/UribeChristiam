@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'mascotas', 
     'bootstrap4',
     'todo',
+    'tempus_dominus',
 ]
 
 SITE_ID = 1
@@ -152,3 +153,7 @@ AUTH_LOGIN_ROUTE = 'login'
 # rediraccionamiento luego de logearse
 LOGIN_REDIRECT_URL = reverse_lazy('home:index')
 LOGOUT_REDIRECT_URL = 'login'
+
+#fecha
+TEMPUS_DOMINUS_LOCALIZE = False
+TEMPUS_DOMINUS_INCLUDE_ASSETS = False

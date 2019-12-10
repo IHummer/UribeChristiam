@@ -1,9 +1,9 @@
-{% extends "base.html" %}
+{% extends "todo/todo_base.html" %}
 {% load static %}
 
 {% block title %}Todo List: {{ task_list.name }}{% endblock %}
 
-{% block body %}
+{% block todo %}
 
   {% if list_slug != "mine" %}
     <button class="btn btn-primary" id="AddTaskButton" type="button"
@@ -21,11 +21,11 @@
       <h1>Tasks assigned to me (in all groups)</h1>
     {% else %}
       <h1>{{ view_completed|yesno:"Completed tasks, Tasks" }} in "{{ task_list.name }}"</h1>
-      <p><small><i>In workgroup "{{ task_list.group }}" - drag rows to set priorities.</i></small></p>
+      <p><small><i>- drag rows to set priorities.</i></small></p>
     {% endif %}
 
-      <table class="table" id="tasktable">
-        <tr class="nodrop">
+      <table class="table" id="tasktable" style="margin-top: 1.5rem;">
+        <tr class="nodrop" style="border-top: 2px solid var(--AzO); border-bottom: 2px solid var(--AzO);">
           <th>Task</th>
           <th>Created</th>
           <th>Due on</th>
@@ -44,7 +44,7 @@
             </td>
             <td>
               <span {% if task.overdue_status %}class="overdue"{% endif %}>
-                {{ task.due_date|date:"m/d/Y" }}
+                {{ task.due_date }}
               </span>
             </td>
             <td>

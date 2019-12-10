@@ -80,7 +80,7 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'todo:lists' %}">
             <i class="fas fa-fw fa-tasks"></i>
-            <span>todo</span></a>
+            <span>Agenda</span></a>
         </li>
       
 
@@ -243,11 +243,12 @@
           <!-- <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more
             information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official
               DataTables documentation</a>.</p> -->
+          {% if header %}
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800 text-header">{{ header }} {% block adicional-header %}{% endblock %}</h1>
             <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                 class="fas fa-download fa-sm text-white-50"></i>Generar Reporte</a>
-          </div>
+          </div>{% endif %}
           {% block body %}
 
 
