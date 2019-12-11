@@ -1,7 +1,16 @@
 {% extends 'base.html' %}
 
 {% block titulo %}Mascotas{% endblock %}
+{% block extrahead%}
 
+<script src="{% static 'tempus/jquery-3.3.1.slim.min.js' %}"></script>
+<script src="{% static 'tempus/moment.min.js' %}"></script>
+<script src="{% static 'tempus/tempusdominus-bootstrap-4.min.js' %}"></script>
+
+<script src="{% static 'tempus/es.js' %}"></script>
+<link href="{% static 'tempus/tempusdominus-bootstrap-4.min.css' %}" rel="stylesheet" type="text/css">
+{{ form.media }}
+{% endblock %}
 {% block mascota-activo %}active{% endblock %}
 {% block adicional-header %}{{ item.nomb_mascota }}{% endblock %}
 {% block body %}

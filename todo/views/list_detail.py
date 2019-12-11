@@ -55,12 +55,7 @@ def list_detail(request, list_id=None, list_slug=None, view_completed=False) -> 
             form.save()
 
             # Send email alert only if Notify checkbox is checked AND assignee is not same as the submitter
-            if (
-                "notify" in request.POST
-                and new_task.assigned_to
-                and new_task.assigned_to != request.user
-            ):
-                send_notify_mail(new_task)
+            
 
             messages.success(request, 'New task "{t}" has been added.'.format(t=new_task.title))
             return redirect(request.path)

@@ -4,13 +4,30 @@
 {% block title %}Todo List: {{ task_list.name }}{% endblock %}
 
 {% block todo %}
+{% load i18n %}
 
   {% if list_slug != "mine" %}
+  {% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>Ya existe tarea con la fecha indicada</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>Ya existe tarea con la fecha indicada</strong>
+        </div>
+    {% endfor %}
+{% endif %}
     <button class="btn btn-primary" id="AddTaskButton" type="button"
       data-toggle="collapse" data-target="#AddEditTask">Add Task</button>
 
     {# Task edit / new task form #}
+    
     <div id="AddEditTask" class="collapse">
+      
       {% include 'todo/include/task_edit.html' %}
     </div>
     <hr />
@@ -40,11 +57,14 @@
                 <a href="{% url 'todo:task_detail' task.id %}">{{ task.title|truncatewords:10 }}</a>
             </td>
             <td>
-                {{ task.created_date|date:"m/d/Y" }}
+                {{ task.created_date|date:"d/m/Y" }}
             </td>
             <td>
               <span {% if task.overdue_status %}class="overdue"{% endif %}>
-                {{ task.due_date }}
+
+                {% language 'es' %}
+                {{ task.due_date|date:"d M" }} {{ task.due_date|time:"h:i a" }}
+                {% endlanguage %}
               </span>
             </td>
             <td>

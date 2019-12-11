@@ -78,6 +78,50 @@
     </div>
 </div>
 <div class="row">
+    {% if num_tasks_act != 0 %}
+    <div class="col-6">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Citas pendientes</h6>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <!-- <th>Código</th> -->
+                  <th>Título</th>
+                  <th>Fecha</th>
+                  <th>Asignado</th>
+  
+  
+                </tr>
+              </thead>
+              <tbody>
+                  {% load i18n %}
+  
+                {% for item in tasks_act %}
+                <tr>
+                  <!-- <td>{{ item.pk }}</td> -->
+                  <td>
+                    <a href="{% url 'todo:task_detail' item.id %}">
+                    {{ item.title }}</a></td>
+                  <td>{% language 'es' %}
+                      {{ item.due_date|date:"d M" }} {{ item.due_date|time:"h:i a" }}
+                      {% endlanguage %}</td>
+                  <td>{{ item.assigned_to }}</td>
+  
+  
+                </tr>
+  
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
   {% if num_agotados != 0 or num_criticos != 0 %}
   <div class="col-6">
     <div class="card shadow mb-4">
@@ -126,46 +170,8 @@
     </div>
   </div>
 
-  {% endif %}
-{% if num_tasks_act != 0 %}
-  <div class="col-6">
-    <div class="card shadow mb-4">
-      <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Citas pendientes</h6>
-      </div>
-      <div class="card-body">
-        <div class="table-responsive">
-          <table class="table table-bordered" width="100%" cellspacing="0">
-            <thead>
-              <tr>
-                <!-- <th>Código</th> -->
-                <th>Título</th>
-                <th>Fecha</th>
-                <th>Asignado</th>
 
 
-              </tr>
-            </thead>
-            <tbody>
-              {% for item in tasks_act %}
-              <tr>
-                <!-- <td>{{ item.pk }}</td> -->
-                <td>
-                  <a href="{% url 'todo:task_detail' item.id %}">
-                  {{ item.title }}</a></td>
-                <td>{{ item.due_date }}</td>
-                <td>{{ item.assigned_to }}</td>
-
-
-              </tr>
-
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
 
 {% endif %}
 </div>
