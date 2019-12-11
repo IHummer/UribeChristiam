@@ -46,11 +46,11 @@
             <div style="display:inline;">
               <button class="btn btn-info btn-sm" type="submit" name="toggle_done">
                 {% if task.completed %} 
-                Marca no registrada {% else %} Marca registrada {% endif %}
+                No completado {% else %} Hecho {% endif %}
               </button>
             </div>
           </form>
-
+          {% load i18n %}
           <form method="post" action="{% url "todo:delete_task" task.id %}" role="form" class="d-inline">
             {% csrf_token %}
             <div style="display:inline;">
@@ -64,16 +64,20 @@
           <strong>Asignar a:</strong>
           {% if task.assigned_to %} {{ task.assigned_to.ap_usr }} {{ task.assigned_to.nomb_usr }} {% else %} Anyone {% endif %}
         </li>
-        <li class="list-group-item">
+        <!-- <li class="list-group-item">
           <strong>Reportado por:</strong> {{ task.created_by.get_full_name }}
-        </li>
+        </li> -->
         <li class="list-group-item">
-          <strong>Fecha limite:</strong> {{ task.due_date }}
+          <strong>Fecha limite:</strong> {% language 'es' %}
+          {{ task.due_date|date:"d M" }} {{ task.due_date|time:"h:i a" }}
+          {% endlanguage %}
         </li>
 
         {% if task.completed %}
           <li class="list-group-item">
-            <strong>Completado en:</strong> {{ task.completed_date}}
+            <strong>Completado en:</strong> {% language 'es' %}
+            {{ task.completed_date|date:"d M" }}
+            {% endlanguage %}
           </li>
         {% else %}
           <li class="list-group-item">

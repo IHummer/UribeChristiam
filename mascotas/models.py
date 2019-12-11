@@ -32,7 +32,7 @@ class Vacuna(models.Model):
 
 
 class DetalleMascota(models.Model):
-    mascota = models.OneToOneField(Mascota, on_delete = models.CASCADE, primary_key = True)
+    mascota = models.OneToOneField(Mascota, on_delete = models.CASCADE)
     fecha_nacimiento = models.DateField(blank=True, null=True) 
     opciones_estado = (
         ('Activo', 'Activo'),

@@ -78,20 +78,16 @@ class FormDetalleMascota(forms.ModelForm):
         model = DetalleMascota
         fields = ('fecha_nacimiento', 'estado', 'adicional')
         widgets = {
-            'fecha_nacimiento': forms.DateField(
-                widget=DatePicker(
+            'fecha_nacimiento' : DatePicker(
                     options={
                         'useCurrent': True,
-                        'collapse': False,
                         'locale': 'es',
-                        'format': 'DD-MM-YYYY',
                     },
                     attrs={
                         'append': 'fa fa-calendar',
                         'icon_toggle': True
                     }
                 ),
-            ),
             'estado': forms.Select(
                 attrs={
                     'oninvalid': 'this.setCustomValidity("Por favor llene el campo")',
@@ -118,20 +114,17 @@ class FormRegistroClinico(forms.ModelForm):
                     'oninvalid': 'this.setCustomValidity("Por favor llene el campo")',
                     'oninput': 'setCustomValidity("")'
                     }),
-            'fecha_registro': forms.DateField(
-                widget=DatePicker(
+            'fecha_registro': DatePicker(
                     options={
                         'useCurrent': True,
                         'collapse': False,
                         'locale': 'es',
-                        'format': 'DD-MM-YYYY',
                     },
                     attrs={
                         'append': 'fa fa-calendar',
                         'icon_toggle': True
                     }
                 ),
-            ),
             'prediagnostico': forms.TextInput(
                 attrs={
                     'oninput': 'setCustomValidity("")'

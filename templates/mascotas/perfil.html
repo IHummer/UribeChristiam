@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
+{% load static %}
 {% block titulo %}Mascotas{% endblock %}
-{% block extrahead%}
+{% block extrahead %}
 
 <script src="{% static 'tempus/jquery-3.3.1.slim.min.js' %}"></script>
 <script src="{% static 'tempus/moment.min.js' %}"></script>
@@ -10,15 +11,118 @@
 <script src="{% static 'tempus/es.js' %}"></script>
 <link href="{% static 'tempus/tempusdominus-bootstrap-4.min.css' %}" rel="stylesheet" type="text/css">
 {{ form.media }}
+
 {% endblock %}
+
 {% block mascota-activo %}active{% endblock %}
 {% block adicional-header %}{{ item.nomb_mascota }}{% endblock %}
 {% block body %}
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">{{ item.nomb_mascota }} </h6>
+        <h6 class="m-0 font-weight-bold text-primary">{{ item_mascota.nomb_mascota }} </h6>
     </div>
     <div class="card-body">
+        {{ item_mascota.propietario_mascota }}
+        {{ item_mascota.tip_mascota }}
+        {{ item_mascota.genero_mascota }}
+        {{ item_mascota.raza_mascota }} 
     </div>
 </div>
+{% if item_detalle %}
+<div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Detalles </h6>
+        </div>
+        <div class="card-body"> 
+            {% for item in item_detalle %}
+            {{ item.fecha_nacimiento }}asdasd
+            {{ item.estado }}
+            {{ item.adicional }}
+            
+            <a href="{% url 'mascotas:editar_detalle' item.id %}">editar</a>
+            {% endfor %}
+        </div>
+    </div>
+{% else %}
+<div class="row">
+        
+    <div class="col-md-1 col-sm-2 icon col-xs-2"><a href="#" data-toggle="modal" data-target="#nuevaMarc"><i class="fas fa-fw fa-plus-circle"></i></a></div>
+    </div>
+
+{% endif %}
+<div class="row">
+        
+        <div class="col-md-1 col-sm-2 icon col-xs-2"><a href="#" data-toggle="modal" data-target="#nuevoregistro">agregaaar registrooo</a></div>
+        </div>
+<div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Historial Clinico</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Detalles</th>
+                            </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in item_registro %}
+                        <tr>
+                            <td>{{ item.fecha_registro }}</td>
+                            <td>{{ item.motivo }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+<div class="modal fade" id="nuevaMarc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Nueva Marca</h5>
+      <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <form class="user" method="POST">
+        {% csrf_token %}
+        <div class="m-3">
+        {{ form_det_masc|crispy }}</div>
+        <div class="row mb-2">
+        <button type="submit" class="btn btn-primary btn-user col-md-4" style="margin: auto;">Guardar!!</button>
+    </form>
+  </div>
+</div>
+</div>
+
+</div>
+<div class="modal fade" id="nuevoregistro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Nueva Marca</h5>
+      <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <form class="user" method="POST">
+        {% csrf_token %}
+        <div class="m-3">
+        {{ form_reg|crispy }}</div>
+        <div class="row mb-2">
+        <button type="submit" class="btn btn-primary btn-user col-md-4" style="margin: auto;">Guardar!!</button>
+    </form>
+  </div>
+</div>
+</div>
+
+</div>
+
 {% endblock %}

@@ -79,7 +79,7 @@
 </div>
 <div class="row">
     {% if num_tasks_act != 0 %}
-    <div class="col-6">
+    <div class="col-8">
       <div class="card shadow mb-4">
         <div class="card-header py-3">
           <h6 class="m-0 font-weight-bold text-primary">Citas pendientes</h6>
@@ -91,6 +91,7 @@
                 <tr>
                   <!-- <th>Código</th> -->
                   <th>Título</th>
+                  <th>Lista</th>
                   <th>Fecha</th>
                   <th>Asignado</th>
   
@@ -106,10 +107,12 @@
                   <td>
                     <a href="{% url 'todo:task_detail' item.id %}">
                     {{ item.title }}</a></td>
+                    <td>{{ item.task_list }}</td>
+
                   <td>{% language 'es' %}
                       {{ item.due_date|date:"d M" }} {{ item.due_date|time:"h:i a" }}
                       {% endlanguage %}</td>
-                  <td>{{ item.assigned_to }}</td>
+                  <td>{{ item.assigned_to|default_if_none:"Yo" }}</td>
   
   
                 </tr>
@@ -123,7 +126,7 @@
     </div>
     {% endif %}
   {% if num_agotados != 0 or num_criticos != 0 %}
-  <div class="col-6">
+  <div class="col-4">
     <div class="card shadow mb-4">
       <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Productos necesitados de repocisión</h6>
@@ -135,8 +138,8 @@
               <tr>
                 <!-- <th>Código</th> -->
                 <th>Nombre</th>
-                <th>Marca</th>
-                <th>Precio</th>
+                <!-- <th>Marca</th>
+                <th>Precio</th> -->
                 <th>Estado</th>
               </tr>
             </thead>
@@ -147,10 +150,10 @@
                 <td>
                   <a href="{% url 'inventario:editar_prod' item.pk %}">{{ item.prod_nomb }}</a>
                 </td>
-                <td>{{ item.marca_nomb|default_if_none:"Generico" }}</td>
+                <!-- <td>{{ item.marca_nomb|default_if_none:"Generico" }}</td>
                 <td>
                     S./ {{ item.precio }}
-                </td>
+                </td> -->
                 <td>
                     {% if item.estado == 'AGOTADO' %}
                     <div class="btn-configuracion"><a class="d-sm-inline-block btn btn-sm btn-danger shadow-sm"
