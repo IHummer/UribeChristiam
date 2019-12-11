@@ -46,7 +46,8 @@ class AddEditTaskForm(ModelForm):
                 'useCurrent': True,
                 'collapse': False,
                 'locale': 'es',
-                'format': 'DD-MM-YYYY HH:mm',
+                'format': 'YYYY-MM-DD HH:mm',
+                'enabledHours': [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
             },
             attrs={
                 'append': 'fa fa-calendar',
