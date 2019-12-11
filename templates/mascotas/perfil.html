@@ -25,102 +25,154 @@
         {{ item_mascota.propietario_mascota }}
         {{ item_mascota.tip_mascota }}
         {{ item_mascota.genero_mascota }}
-        {{ item_mascota.raza_mascota }} 
+        {{ item_mascota.raza_mascota }}
     </div>
 </div>
 {% if item_detalle %}
 <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Detalles </h6>
-        </div>
-        <div class="card-body"> 
-            {% for item in item_detalle %}
-            {{ item.fecha_nacimiento }}asdasd
-            {{ item.estado }}
-            {{ item.adicional }}
-            
-            <a href="{% url 'mascotas:editar_detalle' item.id %}">editar</a>
-            {% endfor %}
-        </div>
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Detalles </h6>
     </div>
+    <div class="card-body">
+        {% for item in item_detalle %}
+        {{ item.fecha_nacimiento }}asdasd
+        {{ item.estado }}
+        {{ item.adicional }}
+
+        <a href="{% url 'mascotas:editar_detalle' item.id %}">editar</a>
+        {% endfor %}
+    </div>
+</div>
 {% else %}
 <div class="row">
-        
-    <div class="col-md-1 col-sm-2 icon col-xs-2"><a href="#" data-toggle="modal" data-target="#nuevaMarc"><i class="fas fa-fw fa-plus-circle"></i></a></div>
-    </div>
+
+    <div class="col-md-1 col-sm-2 icon col-xs-2"><a href="#" data-toggle="modal" data-target="#nuevaMarc"><i
+                class="fas fa-fw fa-plus-circle"></i></a></div>
+</div>
 
 {% endif %}
-<div class="row">
-        
-        <div class="col-md-1 col-sm-2 icon col-xs-2"><a href="#" data-toggle="modal" data-target="#nuevoregistro">agregaaar registrooo</a></div>
-        </div>
+
+
+    <div class="col-md-1 col-sm-2 icon col-xs-2"><a href="#" data-toggle="modal" data-target="#nuevoregistro">agregaaar
+            registrooo</a></div>
+
+
+
+
+    <div class="col-md-1 col-sm-2 icon col-xs-2"><a href="#" data-toggle="modal" data-target="#nuevaimagen">agregaaar
+            foto</a></div>
+{% for item in item_imagen %}
+
+<img src="{% get_media_prefix %}{{ item.mascota_img }}" width="500px" />
+
+{% endfor %}
+
 <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Historial Clinico</h6>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>Fecha</th>
-                            <th>Detalles</th>
-                            </tr>
-                    </thead>
-                    <tbody>
-                        {% for item in item_registro %}
-                        <tr>
-                            <td>{{ item.fecha_registro }}</td>
-                            <td>{{ item.motivo }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Historial Clinico</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Fecha</th>
+                        <th>Detalles</th>
+                        <th>Editar</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in item_registro %}
+                    <tr>
+                        <td>{{ item.pk }}</td>
+                        <td>{{ item.fecha_registro }}</td>
+                        <td class="col-8">
+                            <p><strong> Motivo:</strong> {{ item.motivo }}</p>
+                            <p><strong> Prediagnostico:</strong> {{ item.prediagnostico|default_if_none:"N/A" }}</p>
+                            <p><strong> Indicaciones:</strong> {{ item.indicaciones }}</p>
+                            <p><strong> Sistema afectado:</strong> {{ item.sistema_afectado|default_if_none:"N/A" }}</p>
+
+                        </td>
+                        <td>
+                            <div class="btn-configuracion"><a href="{% url 'mascotas:editar_registro' item.pk %}"
+                                    class="d-sm-inline-block btn btn-sm btn-primary shadow-sm">Editar</a></div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
+</div>
 
 <div class="modal fade" id="nuevaMarc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-aria-hidden="true">
-<div class="modal-dialog" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Nueva Marca</h5>
-      <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">×</span>
-      </button>
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nueva Marca</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form class="user" method="POST">
+                {% csrf_token %}
+                <div class="m-3">
+                    {{ form_det_masc|crispy }}</div>
+                <div class="row mb-2">
+                    <button type="submit" class="btn btn-primary btn-user col-md-4"
+                        style="margin: auto;">Guardar!!</button>
+            </form>
+        </div>
     </div>
-    <form class="user" method="POST">
-        {% csrf_token %}
-        <div class="m-3">
-        {{ form_det_masc|crispy }}</div>
-        <div class="row mb-2">
-        <button type="submit" class="btn btn-primary btn-user col-md-4" style="margin: auto;">Guardar!!</button>
-    </form>
-  </div>
 </div>
+
+</div>
+<div class="modal fade" id="nuevaimagen" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nueva imagen</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form class="user" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="m-3">
+                    {{ form_imagen }}</div>
+                <div class="row mb-2">
+                    <button type="submit" class="btn btn-primary btn-user col-md-4"
+                        style="margin: auto;">Guardar!!</button>
+            </form>
+        </div>
+    </div>
 </div>
 
 </div>
 <div class="modal fade" id="nuevoregistro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2"
-aria-hidden="true">
-<div class="modal-dialog" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Nueva Marca</h5>
-      <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">×</span>
-      </button>
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nueva Marca</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form class="user" method="POST">
+                {% csrf_token %}
+                <div class="m-3">
+                    {{ form_reg|crispy }}</div>
+                <div class="row mb-2">
+                    <button type="submit" class="btn btn-primary btn-user col-md-4"
+                        style="margin: auto;">Guardar!!</button>
+            </form>
+        </div>
     </div>
-    <form class="user" method="POST">
-        {% csrf_token %}
-        <div class="m-3">
-        {{ form_reg|crispy }}</div>
-        <div class="row mb-2">
-        <button type="submit" class="btn btn-primary btn-user col-md-4" style="margin: auto;">Guardar!!</button>
-    </form>
-  </div>
-</div>
 </div>
 
 </div>

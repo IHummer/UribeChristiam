@@ -32,6 +32,8 @@ def perfil_mascota(request, item_id):
         mascota = get_object_or_404(Mascota, pk=item_id)
         form_det_masc = FormDetalleMascota(request.POST or None)
         form_reg = FormRegistroClinico(request.POST or None)
+        item_imagen = ImagenMascota.objects.filter(mascota=item_id)
+        form_imagen = FormImagenMascota(request.POST or None, request.FILES or None)
 
         if form_det_masc.is_valid():
             nform_det_masc = form_det_masc.save(commit=False) # Don't save it yet
@@ -43,15 +45,22 @@ def perfil_mascota(request, item_id):
             nform_reg.mascota = mascota # Add person
             nform_reg.save() # Now save it
             return redirect('mascotas:perfil_mascota', item_id=item_id)
+        elif form_imagen.is_valid():
+            nform_imagen = form_imagen.save(commit=False) # Don't save it yet
+            nform_imagen.mascota = mascota # Add person
+            nform_imagen.save() # Now save it
+            return redirect('mascotas:perfil_mascota', item_id=item_id)
         
         
         context = {
         'item_mascota' : item_mascota,
+        'item_imagen' : item_imagen,
         'header' : 'Detalles de Mascota: ',
         'item_detalle': item_detalle,
         'item_registro': item_registro,
         'form_det_masc': form_det_masc,
-        'form_reg' : form_reg
+        'form_reg' : form_reg,
+        'form_imagen' : form_imagen
         }
     except Mascota.DoesNotExist:
         raise Http404("Mascota no existe")
@@ -59,6 +68,7 @@ def perfil_mascota(request, item_id):
 
 def editar_detalle(request, item_id):
     item = DetalleMascota.objects.get(pk=item_id)
+    
     if request.method == "POST":
         form = FormDetalleMascota(request.POST, instance=item)
         if form.is_valid():
@@ -67,9 +77,26 @@ def editar_detalle(request, item_id):
     else:
         form = FormDetalleMascota(instance=item)
         context = {
-            'tipo_titulo': 'tipo_titulo',
-            'tipo_boton' : 'tipo_boton',
+            'tipo_form': 'detalle', 
             'form' : form,
+            'item': item
+        }
+        return render(request, 'mascotas/editar_detalle.html', context)
+    
+def editar_registro(request, item_id):
+    item = RegistroClinico.objects.get(pk=item_id)
+    mascota = Mascota.objects.get(pk=item.mascota.id)
+    if request.method == "POST":
+        form = FormRegistroClinico(request.POST, instance=item)
+        if form.is_valid():
+            form.save()
+            return redirect('mascotas:perfil_mascota', item_id=mascota.pk)
+    else:
+        form = FormRegistroClinico(instance=item)
+        context = {
+            'tipo_form': 'registro',
+            'form' : form,
+            'item': item,
         }
         return render(request, 'mascotas/editar_detalle.html', context)
 

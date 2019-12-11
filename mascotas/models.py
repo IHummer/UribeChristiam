@@ -54,6 +54,10 @@ class RegistroClinico(models.Model):
     indicaciones = models.CharField(max_length=250, blank=False, null=False)
     sistema_afectado = models.CharField(max_length=100, blank=True, null=True)
 
+class ImagenMascota(models.Model):
+    mascota = models.ForeignKey(Mascota, on_delete=models.CASCADE)
+    mascota_img = models.ImageField(upload_to='images')
+
 class DetalleVacuna(models.Model):
     registro_clinico = models.ForeignKey(RegistroClinico, on_delete=models.CASCADE)
     nomb_vacuna = models.ForeignKey(Vacuna, on_delete = models.CASCADE)

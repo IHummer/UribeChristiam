@@ -93,7 +93,7 @@ class FormDetalleMascota(forms.ModelForm):
                     'oninvalid': 'this.setCustomValidity("Por favor llene el campo")',
                     'oninput': 'setCustomValidity("")'
                     }),
-            'adicional': forms.TextInput(
+            'adicional': forms.Textarea(
                 attrs={
                     'oninvalid': 'this.setCustomValidity("Por favor llene el campo")',
                     'oninput': 'setCustomValidity("")'
@@ -129,7 +129,7 @@ class FormRegistroClinico(forms.ModelForm):
                 attrs={
                     'oninput': 'setCustomValidity("")'
                     }),
-            'indicaciones': forms.TextInput(
+            'indicaciones': forms.Textarea(
                 attrs={
                     'oninvalid': 'this.setCustomValidity("Por favor llene el campo")',
                     'oninput': 'setCustomValidity("")'
@@ -172,4 +172,13 @@ class FormDetalleMedicina(forms.ModelForm):
             }
         labels = {
             'descripcion_trat_med': _('Descripción')
+        }
+
+class FormImagenMascota(forms.ModelForm):
+    class Meta:
+        model = ImagenMascota
+        fields = ('mascota_img',)
+        
+        labels = {
+            'mascota_img': _('Seleccionar archivo de imagen')
         }
