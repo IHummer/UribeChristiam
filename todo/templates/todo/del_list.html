@@ -3,21 +3,21 @@
 
 {% block todo %}
   {% if user.is_staff %}
-  <h1>Delete entire list: {{ task_list.name }} ?</h1>
+  <h1>Borrar lista entera</h1>: {{ task_list.name }} ?</h1>
 
-  <p>Category tally:</p>
+  <p>Cuenta de categoría:</p>
 
   <ul>
-    <li>Incomplete: {{ task_count_undone }} </li>
-    <li>Complete: {{ task_count_done }} </li>
+    <li>Incompleto: {{ task_count_undone }} </li>
+    <li>Completo: {{ task_count_done }} </li>
     <li>
       <strong>Total: {{ task_count_total }}</strong>
     </li>
   </ul>
 
-  <p> ... all of which will be irretrievably
-    <strong>blown away</strong>. Are you sure you want to do that?</p>
-
+ <!--  <p> ... todo lo cual será irremediablemente
+    <strong>blown away</strong>. Are you sure you want to do that?</p> -->
+    <p> ... todo lo cual será irremediablemente. Are you sure you want to do that?</p>
   <form action="" method="post" accept-charset="utf-8">
     {% csrf_token %}
     <input type="hidden" name="task_list" value="{{ task_list.id }}">
@@ -29,5 +29,5 @@
 
 
 {% else %}
-  <p>Sorry, you don't have permission to delete lists. Please contact your group administrator.</p>
+  <p>Lo sentimos, no tienes permiso para eliminar listas. Póngase en contacto con el administrador de su grupo.</p>
 {% endif %} {% endblock %}

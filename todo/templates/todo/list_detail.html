@@ -22,7 +22,7 @@
     {% endfor %}
 {% endif %}
     <button class="btn btn-primary" id="AddTaskButton" type="button"
-      data-toggle="collapse" data-target="#AddEditTask">Add Task</button>
+      data-toggle="collapse" data-target="#AddEditTask">Añadir tarea</button>
 
     {# Task edit / new task form #}
     
@@ -35,20 +35,21 @@
 
   {% if tasks %}
     {% if list_slug == "mine" %}
-      <h1>Tasks assigned to me (in all groups)</h1>
+      <h1>Tareas asignadas para mi(en todos los grupos)</h1>
     {% else %}
-      <h1>{{ view_completed|yesno:"Completed tasks, Tasks" }} in "{{ task_list.name }}"</h1>
-      <p><small><i>- drag rows to set priorities.</i></small></p>
+      <h1>{{ view_completed|yesno:"Completed tasks, Tasks" }} en "{{ task_list.name }}"</h1>
+      <p><small><i>- 
+        Arrastrar filas para establecer prioridades.</i></small></p>
     {% endif %}
 
       <table class="table" id="tasktable" style="margin-top: 1.5rem;">
         <tr class="nodrop" style="border-top: 2px solid var(--AzO); border-bottom: 2px solid var(--AzO);">
-          <th>Task</th>
-          <th>Created</th>
-          <th>Due on</th>
-          <th>Owner</th>
-          <th>Assigned</th>
-          <th>Mark</th>
+          <th>Tareas</th>
+          <th>Crear</th>
+          <th>Debido a</th>
+          <th>Propietario</th>
+          <th>Asignado</th>
+          <th>Marca</th>
         </tr>
 
         {% for task in tasks %}
@@ -71,16 +72,16 @@
               {{ task.created_by }}
             </td>
             <td>
-              {% if task.assigned_to %}{{ task.assigned_to }}{% else %}Anyone{% endif %}
+              {% if task.assigned_to %}{{ task.assigned_to }}{% else %}Todos{% endif %}
             </td>
             <td>
               <form method="post" action="{% url "todo:task_toggle_done" task.id %}" role="form">
                 {% csrf_token %}
                 <button class="btn btn-info btn-sm" type="submit" name="toggle_done">
                   {% if view_completed %}
-                    Not Done
+                    No hecho
                   {% else %}
-                    Done
+                    Hecho
                   {% endif %}
                 </button>
               </form>
@@ -92,7 +93,8 @@
       {% include 'todo/include/toggle_delete.html' %}
 
   {% else %}
-    <h4>No tasks on this list yet (add one!)</h4>
+    <h4>
+      Aún no hay tareas en esta lista (agrega una!)</h4>
     {% include 'todo/include/toggle_delete.html' %}
 
   {% endif %}

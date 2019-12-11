@@ -38,14 +38,15 @@
             type="button"
             data-toggle="collapse"
             data-target="#TaskEdit">
-            Edit Task
+            Editar Tarea
           </button>
 
           <form method="post" action="{% url "todo:task_toggle_done" task.id %}" role="form" class="d-inline">
             {% csrf_token %}
             <div style="display:inline;">
               <button class="btn btn-info btn-sm" type="submit" name="toggle_done">
-                {% if task.completed %} Mark Not Done {% else %} Mark Done {% endif %}
+                {% if task.completed %} 
+                Marca no registrada {% else %} Marca registrada {% endif %}
               </button>
             </div>
           </form>
@@ -54,34 +55,34 @@
             {% csrf_token %}
             <div style="display:inline;">
               <button class="btn btn-danger btn-sm" type="submit" name="submit_delete">
-                Delete
+                Borrar
               </button>
             </div>
           </form>
         </li>
         <li class="list-group-item">
-          <strong>Assigned to:</strong>
+          <strong>Asignar a:</strong>
           {% if task.assigned_to %} {{ task.assigned_to.ap_usr }} {{ task.assigned_to.nomb_usr }} {% else %} Anyone {% endif %}
         </li>
         <li class="list-group-item">
-          <strong>Reported by:</strong> {{ task.created_by.get_full_name }}
+          <strong>Reportado por:</strong> {{ task.created_by.get_full_name }}
         </li>
         <li class="list-group-item">
-          <strong>Due date:</strong> {{ task.due_date }}
+          <strong>Fecha limite:</strong> {{ task.due_date }}
         </li>
 
         {% if task.completed %}
           <li class="list-group-item">
-            <strong>Completed on:</strong> {{ task.completed_date}}
+            <strong>Completado en:</strong> {{ task.completed_date}}
           </li>
         {% else %}
           <li class="list-group-item">
-            <strong>Completed:</strong> {{ task.completed|yesno:"Yes,No" }}
+            <strong>Completado:</strong> {{ task.completed|yesno:"Yes,No" }}
           </li>
         {% endif %}
 
         <li class="list-group-item">
-          <strong>In list:</strong>
+          <strong>En lista:</strong>
           <a href="{% url 'todo:list_detail' task.task_list.id task.task_list.slug %}">
             {{ task.task_list }}
           </a>
@@ -96,7 +97,7 @@
     {% if merge_form is not None %}
     <form action="" method="post">
       <div class="card border-danger">
-      <div class="card-header">Merge task</div>
+      <div class="card-header">Unir tareas</div>
       <div class="card-body">
         <div class="">
           <p>Merging is a destructive operation. This task will not exist anymore, and comments will be moved to the target task.</p>
@@ -118,7 +119,8 @@
 {% if attachments_enabled %}
   <div class="card mt-4">
     <h5 class="card-header">
-      Attachments
+      
+Archivos adjuntos
     </h5>
 
     <div class="card-body pb-0">
@@ -127,11 +129,11 @@
           <table class="table mb-3">
             <thead>
               <tr>
-                <th>File</th>
-                <th>Uploaded</th>
-                <th>By</th>
-                <th>Type</th>
-                <th>Remove</th>
+                <th>Archivos</th>
+                <th>Subir</th>
+                <th>Por</th>
+                <th>Tipo</th>
+                <th>Remover</th>
               </tr>
             </thead>
             <tbody>
@@ -159,10 +161,10 @@
         <div class="input-group mb-3">
           <div class="custom-file">
             <input type="file" class="custom-file-input" id="attachment_file_input" name="attachment_file_input" />
-            <label class="custom-file-label" for="attachment_file_input">Choose file</label>
+            <label class="custom-file-label" for="attachment_file_input">Elegir archivo</label>
           </div>
           <div class="input-group-append">
-            <button class="btn btn-primary">Upload</button>
+            <button class="btn btn-primary">Subir</button>
           </div>
         </div>
       </form>
@@ -172,7 +174,7 @@
 {% endif %}
 
   <div class="mt-3" style="display: none;">
-    <h5>Add comment</h5>
+    <h5>Añadir comentario</h5>
     <form action="" method="post">
       {% csrf_token %}
       <div class="form-group">

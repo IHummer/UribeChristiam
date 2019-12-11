@@ -5,25 +5,28 @@
 
 {% block todo %}
   <h2>
-    Import CSV
+    Importar CSV
   </h2>
 
   <p>
-    Batch-import tasks by uploading a specifically-formatted CSV.
-    See documentation for formatting rules.
-    Successs and failures will be reported here.
+    
+Importar tareas por lotes cargando un CSV con formato específico.
+Consulte la documentación para las reglas de formato.
+Los éxitos y fracasos serán reportados aquí.
   </p>
 
   {% if results %}
     <div class="card mb-4">
       <div class="card-header">
-        Results of CSV upload
+        
+Resultados de la carga de CSV
       </div>
       <div class="card-body">
 
         {% if results.summaries %}
           <p>
-            <b>Summary:</b>
+            <b>
+              Resumen:</b>
           </p>
           <ul>
             {% for line in results.summaries %}
@@ -34,7 +37,7 @@
 
         {% if results.upserts %}
           <p>
-            <b>Upserts (tasks created or updated):</b>
+            <b>Upserts (tareas creadas o actualizadas):</b>
           </p>
           <ul>
             {% for line in results.upserts %}
@@ -45,12 +48,13 @@
 
         {% if results.errors %}
           <p>
-            <b>Errors (tasks NOT created or updated):</b>
+            <b>Errores (tareas NO creadas o actualizadas):</b>
           </p>
           <ul>
             {% for error_row in results.errors %}
               {% for k, error_list in error_row.items  %}
-                <li>CSV row {{ k }}</li>
+                <li>
+                  Fila CSV {{ k }}</li>
                 <ul>
                   {% for err in error_list %}
                     <li>{{ err }}</li>
@@ -68,7 +72,7 @@
 
   <div class="card">
     <div class="card-header">
-      Upload Tasks
+      Subir tareas
     </div>
     <div class="card-body">
       <form method="post" enctype="multipart/form-data">
@@ -76,7 +80,7 @@
         <div>
           <input type="file" name="csvfile" accept="text/csv">
         </div>
-        <button type="submit" class="btn btn-primary mt-4">Upload</button>
+        <button type="submit" class="btn btn-primary mt-4">Subir</button>
       </form>
     </div>
   </div>
