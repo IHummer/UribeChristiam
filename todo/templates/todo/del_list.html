@@ -3,9 +3,9 @@
 
 {% block todo %}
   {% if user.is_staff %}
-  <h1>Borrar lista entera</h1>: {{ task_list.name }} ?</h1>
+  <h1>Borrar lista entera</h1>: ¿{{ task_list.name }} ?</h1>
 
-  <p>Cuenta de categoría:</p>
+  <p>Registro de tareas:</p>
 
   <ul>
     <li>Incompleto: {{ task_count_undone }} </li>
@@ -17,13 +17,13 @@
 
  <!--  <p> ... todo lo cual será irremediablemente
     <strong>blown away</strong>. Are you sure you want to do that?</p> -->
-    <p> ... todo lo cual será irremediablemente. Are you sure you want to do that?</p>
+    <p> ... todo lo cual será irremediablemente. ¿Estás seguro de que quieres hacer eso?</p>
   <form action="" method="post" accept-charset="utf-8">
     {% csrf_token %}
     <input type="hidden" name="task_list" value="{{ task_list.id }}">
     <p>
-      <a href="{% url 'todo:list_detail' task_list.id task_list.slug %}" class="btn btn-success">Return to list: {{ task_list.name }}</a>
-      <input type="submit" name="delete-confirm" value="Do it! &rarr;" class="btn btn-danger">
+      <a href="{% url 'todo:list_detail' task_list.id task_list.slug %}" class="btn btn-success">Regresar a la lista: {{ task_list.name }}</a>
+      <input type="submit" name="delete-confirm" value="Hacer esto! &rarr;" class="btn btn-danger">
     </p>
   </form>
 
