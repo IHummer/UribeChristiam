@@ -37,7 +37,7 @@
     {% if list_slug == "mine" %}
       <h1>Tareas asignadas para mi(en todos los grupos)</h1>
     {% else %}
-      <h1>{{ view_completed|yesno:"Completed tasks, Tasks" }} en "{{ task_list.name }}"</h1>
+      <h1>{{ view_completed|yesno:"Tareas completadas, Tareas" }} en "{{ task_list.name }}"</h1>
       <p><small><i>- 
         Arrastrar filas para establecer prioridades.</i></small></p>
     {% endif %}
@@ -129,7 +129,7 @@
     function handleClick()
     {
         console.log(this.innerHTML);
-        this.innerHTML = (this.innerHTML == 'Add Task' ? 'Cancel' : 'Add Task');
+        this.innerHTML = (this.innerHTML == 'Add Task' ? 'Cancel' : 'Añadir evento');
     }
     document.getElementById('AddTaskButton').onclick=handleClick;
   </script>
