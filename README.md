@@ -7,3 +7,10 @@ Recursos usados:
 
 
 FIS - UNSLG
+
+Codigos a usar  en el cmd:
+pip install -r requirements.txt --user
+py manage.py migrate
+py manage.py createsuperuser
+
+py manage.py runserver
