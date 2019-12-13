@@ -101,4 +101,10 @@ def editar_registro(request, item_id):
         return render(request, 'mascotas/editar_detalle.html', context)
 
 
+def eliminar_imagen(request, item_id):
+    item = ImagenMascota.objects.get(pk=item_id)
+    mascota = Mascota.objects.get(pk=item.mascota.id)
+    item.delete()
+    return redirect('mascotas:perfil_mascota', item_id=mascota.pk)
+
 

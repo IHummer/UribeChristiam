@@ -83,17 +83,16 @@
                         <th>Especie</th>
                         <th>Género</th>
                         <th>Raza</th>
-                        <th>Ver</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for item in items_mascota %}
                     <tr>
-                        <td>{{ item.nomb_mascota }}</td>
+                        <td><a href="{% url 'mascotas:perfil_mascota' item.id %}">{{ item.nomb_mascota }}</a></td>
                         <td>{{ item.tip_mascota }}</td>
                         <td>{{ item.genero_mascota }}</td>
                         <td>{{ item.raza_mascota|default_if_none:"---" }}</td>
-                        <td><div class="btn-configuracion"><a href="{% url 'mascotas:perfil_mascota' item.id %}" class=" d-sm-inline-block btn btn-sm btn-primary shadow-sm">Detalles</a></div></td>
+                        
                     </tr>
                     {% endfor %}
                 </tbody>

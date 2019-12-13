@@ -1,7 +1,8 @@
 {% extends "todo/todo_base.html" %}
 
 {% block title %}Task:{{ task.title }}{% endblock %}
-
+{% load static %}
+{% load i18n %}
 {% block extrahead %}
 <style>
 .select2 {
@@ -62,7 +63,7 @@
         </li>
         <li class="list-group-item">
           <strong>Asignar a:</strong>
-          {% if task.assigned_to %} {{ task.assigned_to.ap_usr }} {{ task.assigned_to.nomb_usr }} {% else %} Anyone {% endif %}
+          {% if task.assigned_to %} {{ task.assigned_to.ap_usr }} {{ task.assigned_to.nomb_usr }} {% else %} Yo {% endif %}
         </li>
         <!-- <li class="list-group-item">
           <strong>Reportado por:</strong> {{ task.created_by.get_full_name }}

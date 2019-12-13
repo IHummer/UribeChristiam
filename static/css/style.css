@@ -132,11 +132,13 @@ body {
 }
 
 .btn-secondary {
-    background: #66b2b2;
+    background: var(--AzSc);
+    color: var(--AzSo);
     border: none;
 }
 .btn-secondary:hover {
-    background: #008080;
+    background: var(--AzC);
+    color: var(--AzSo);
 }
 .fa-plus-circle {
     font-size: 3rem ;

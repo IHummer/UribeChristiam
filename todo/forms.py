@@ -51,7 +51,7 @@ class AddEditTaskForm(ModelForm):
             },
             attrs={
                 'append': 'fa fa-calendar',
-                'icon_toggle': True
+                
             }
         ), required=True
     )
