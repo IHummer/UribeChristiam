@@ -6,7 +6,7 @@ django-autoslug==1.9.6
 django-bootstrap4==1.1.1
 django-crispy-forms==1.8.1
 django-tempus-dominus==5.1.2.9
-
+django-todo==2.4.9
 Pillow==6.2.1
 pytz==2019.3
 six==1.13.0
