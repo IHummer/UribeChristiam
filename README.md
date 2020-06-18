@@ -1,16 +1,39 @@
-Proyecto universitario de un Sistema Gestor de Veterinaria
+Proyecto universitario de un Sistema Web Gestor de Veterinaria
 
-Recursos usados:
--Python
--Django 
--SBAdmin2 template
+#### Construido con:
+- Python
+- Django 
+- SBAdmin2 Template 
+
+[Demostración del Sistema(3:40)](https://youtu.be/xdGusQKlXN0?t=220)
+
+#### Funcionalidades:
+* Gestión de Inventario
+* Gestión de Usuarios
+* Gestión de Mascotas por Usuario
+* Perfil e Historial Clínico de Mascotas
+* Agenda - Lista de Tareas
 
 
-FIS - UNSLG
+#### Cómo construirlo:
+```
+#Instalar los requerimientos
+pip install -r requirements.txt 
 
-Codigos a usar  en el cmd:
-pip install -r requirements.txt --user
-py manage.py migrate
+#migrar la base de datos
+py manage.py migrate 
+
+#Crea el administrador de Django
 py manage.py createsuperuser
 
-py manage.py runserver
+#Correr el server localmente
+py manage.py runserver 
+
+#Ahora puedes entrar al navegador colocar localhost y listo
+#Cómo alternativa puedes hacerlo público:
+#Primero tendrás que registrar tu IPV4 dentro de VeterinariaFIS>settings.py, en ALLOWED_HOSTS
+#Luego lo corres con
+
+py manage.py runserver 0.0.0.0:8000 
+
+```

@@ -28,9 +28,7 @@ DEBUG = True
 #colocar ipv4 para crear servidor local
 ALLOWED_HOSTS = [
     '0.0.0.0',
-    '192.168.1.60',
     '127.0.0.1',
-    '190.232.50.205',
 ]
 
 
